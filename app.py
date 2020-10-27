@@ -288,8 +288,8 @@ def index_page():
 @app.route('/home')
 @cache.cached(timeout=3600, key_prefix=cache_key)
 def page_home():
-    l_m = md.dbweb.items.find({"$and": [{"type": "movies"}, {"ban": {"$nin": [1]}}]}, {'_id': False}).sort('data_id', -1).limit(16)
-    l_s = md.dbweb.items.find({"$and": [{"type": "series"}, {"ban": {"$nin": [1]}}]}, {'_id': False}).sort('data_id', -1).limit(16)
+    l_m = md.dbweb.items.find({"$and": [{"type": "movies"}, {"ban": {"$nin": [4]}}]}, {'_id': False}).sort('data_id', -1).limit(16)
+    l_s = md.dbweb.items.find({"$and": [{"type": "series"}, {"ban": {"$nin": [4]}}]}, {'_id': False}).sort('data_id', -1).limit(16)
     ftrd_item = md.dbweb.config.find_one({'type': 'featured'}, {'_id': False})
     ftrd = md.dbweb.items.find({'data_id': {'$in': ftrd_item['mid']}}).sort('data_id', -1).limit(16)
     sld_item = md.dbweb.config.find_one({'type': 'slider'}, {'_id': False})
@@ -412,7 +412,7 @@ def film_list(slug, page):
 @app.route('/film/<slug>/', methods=['GET'])
 @cache.cached(timeout=3600, key_prefix=cache_key)
 def film_page(slug):
-    items = md.dbweb.items.find_one({"$and": [{"slug": slug}, {"ban": {"$nin": [1]}}]}, {'_id': False})
+    items = md.dbweb.items.find_one({"$and": [{"slug": slug}, {"ban": {"$nin": [4]}}]}, {'_id': False})
     if items:
         rate = md.dblog.ratings.find_one({"data_id": items['data_id']}, {'_id': False})
         html = render_template('pages/film-single.html', items=items, related=md.related(slug), slug=slug, rate=rate)
@@ -423,7 +423,7 @@ def film_page(slug):
 
 @app.route('/film/<slug>/watching.html', methods=['GET'])
 def film_watch(slug):
-    items = md.dbweb.items.find_one({"$and": [{"slug": slug}, {"ban": {"$nin": [1]}}]}, {'_id': False})
+    items = md.dbweb.items.find_one({"$and": [{"slug": slug}, {"ban": {"$nin": [4]}}]}, {'_id': False})
     if items:
         vids = md.dbweb.videos.find_one({'data_id': items['data_id']}, {'_id': False})
         if not vids:
@@ -439,7 +439,7 @@ def film_watch(slug):
 @cache.cached(timeout=3600, key_prefix=cache_key)
 def genre_list(slug, page):
     offset_page = (page - 1) * int(md.per_page)
-    items = md.dbweb.items.find({"$and": [{"genre.slug": str(slug)}, {"ban": {"$nin": [1]}}]}, {'_id': False}
+    items = md.dbweb.items.find({"$and": [{"genre.slug": str(slug)}, {"ban": {"$nin": [4]}}]}, {'_id': False}
                                 ).sort('data_id', -1).skip(offset_page).limit(md.per_page)
     ic = items.count()
     tp = ic // md.per_page + 1
@@ -457,7 +457,7 @@ def genre_list(slug, page):
 @cache.cached(timeout=3600, key_prefix=cache_key)
 def country_list(slug, page):
     offset_page = (page - 1) * int(md.per_page)
-    items = md.dbweb.items.find({"$and": [{"country.slug": str(slug)}, {"ban": {"$nin": [1]}}]}, {'_id': False}
+    items = md.dbweb.items.find({"$and": [{"country.slug": str(slug)}, {"ban": {"$nin": [4]}}]}, {'_id': False}
                                 ).sort('data_id', -1).skip(offset_page).limit(md.per_page)
     ic = items.count()
     tp = ic // md.per_page + 1
@@ -477,7 +477,7 @@ def top_imdb(page):
     offset_page = (page - 1) * int(md.per_page)
     next_page = page + 1
     prev_page = page - 1
-    items = md.dbweb.items.find({"ban": {"$nin": [1]}}).sort('imdb_star', -1).skip(offset_page).limit(md.per_page)
+    items = md.dbweb.items.find({"ban": {"$nin": [4]}}).sort('imdb_star', -1).skip(offset_page).limit(md.per_page)
     if items:
         tp = items.count() // md.per_page + 1
         html = render_template('pages/top-imdb.html', items=items, tp=tp, cp=page, np=next_page, pp=prev_page)
@@ -514,7 +514,7 @@ def az_list(libs, page):
 @cache.cached(timeout=3600, key_prefix=cache_key)
 def actor_list(slug, page):
     offset_page = (page - 1) * int(md.per_page)
-    items = md.dbweb.items.find({"$and": [{"actors.slug": str(slug)}, {"ban": {"$nin": [1]}}]}, {'_id': False}
+    items = md.dbweb.items.find({"$and": [{"actors.slug": str(slug)}, {"ban": {"$nin": [4]}}]}, {'_id': False}
                                 ).sort('data_id', -1).skip(offset_page).limit(md.per_page)
     ic = items.count()
     tp = ic // md.per_page + 1
@@ -532,7 +532,7 @@ def actor_list(slug, page):
 @cache.cached(timeout=3600, key_prefix=cache_key)
 def director_list(slug, page):
     offset_page = (page - 1) * int(md.per_page)
-    items = md.dbweb.items.find({"$and": [{"director.slug": str(slug)}, {"ban": {"$nin": [1]}}]}, {'_id': False}
+    items = md.dbweb.items.find({"$and": [{"director.slug": str(slug)}, {"ban": {"$nin": [4]}}]}, {'_id': False}
                                 ).sort('data_id', -1).skip(offset_page).limit(md.per_page)
     ic = items.count()
     tp = ic // md.per_page + 1
@@ -550,7 +550,7 @@ def director_list(slug, page):
 @cache.cached(timeout=3600, key_prefix=cache_key)
 def tags_list(slug, page):
     offset_page = (page - 1) * int(md.per_page)
-    items = md.dbweb.items.find({"$and": [{"keyword.slug": str(slug)}, {"ban": {"$nin": [1]}}]}, {'_id': False}
+    items = md.dbweb.items.find({"$and": [{"keyword.slug": str(slug)}, {"ban": {"$nin": [4]}}]}, {'_id': False}
                                 ).sort('data_id', -1).skip(offset_page).limit(md.per_page)
     ic = items.count()
     tp = ic // md.per_page + 1
@@ -568,7 +568,7 @@ def tags_list(slug, page):
 @cache.cached(timeout=3600, key_prefix=cache_key)
 def release_list(slug, page):
     offset_page = (page - 1) * int(md.per_page)
-    items = md.dbweb.items.find({"$and": [{"year": int(slug)}, {"ban": {"$nin": [1]}}]}, {'_id': False}
+    items = md.dbweb.items.find({"$and": [{"year": int(slug)}, {"ban": {"$nin": [4]}}]}, {'_id': False}
                                 ).sort('data_id', -1).skip(offset_page).limit(md.per_page)
     ic = items.count()
     tp = ic // md.per_page + 1
