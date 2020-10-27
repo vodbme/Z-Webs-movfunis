@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/main-sitemap.xsl"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <sitemap>
-        <loc>{{ web_conf.url }}/post-sitemap.xml</loc>
+        <loc>{{ url_for('index_page') }}/post-sitemap.xml</loc>
         <lastmod>{{ time }}</lastmod>
     </sitemap>
     <sitemap>
-        <loc>{{ web_conf.url }}/news-sitemap.xml</loc>
+        <loc>{{ url_for('index_page') }}/news-sitemap.xml</loc>
         <lastmod>{{ time }}</lastmod>
     </sitemap>
     <sitemap>
-        <loc>{{ web_conf.url }}/page-sitemap.xml</loc>
+        <loc>{{ url_for('index_page') }}/page-sitemap.xml</loc>
         <lastmod>{{ time }}</lastmod>
     </sitemap>
     <sitemap>
-        <loc>{{ web_conf.url }}/genre-sitemap.xml</loc>
+        <loc>{{ url_for('index_page') }}/genre-sitemap.xml</loc>
         <lastmod>{{ time }}</lastmod>
     </sitemap>
     <sitemap>
-        <loc>{{ web_conf.url }}/country-sitemap.xml</loc>
+        <loc>{{ url_for('index_page') }}/country-sitemap.xml</loc>
         <lastmod>{{ time }}</lastmod>
     </sitemap>
     <sitemap>
-        <loc>{{ web_conf.url }}/actor-sitemap.xml</loc>
+        <loc>{{ url_for('index_page') }}/actor-sitemap.xml</loc>
         <lastmod>{{ time }}</lastmod>
     </sitemap>
     <sitemap>
-        <loc>{{ web_conf.url }}/director-sitemap.xml</loc>
+        <loc>{{ url_for('index_page') }}/director-sitemap.xml</loc>
         <lastmod>{{ time }}</lastmod>
     </sitemap>
     <sitemap>
-        <loc>{{ web_conf.url }}/tag-sitemap.xml</loc>
+        <loc>{{ url_for('index_page') }}/tag-sitemap.xml</loc>
         <lastmod>{{ time }}</lastmod>
     </sitemap>
     <sitemap>
-        <loc>{{ web_conf.url }}/release-sitemap.xml</loc>
+        <loc>{{ url_for('index_page') }}/release-sitemap.xml</loc>
         <lastmod>{{ time }}</lastmod>
     </sitemap>
     <sitemap>
-        <loc>{{ web_conf.url }}/video-sitemap.xml</loc>
+        <loc>{{ url_for('index_page') }}/video-sitemap.xml</loc>
         <lastmod>{{ time }}</lastmod>
     </sitemap>
 </sitemapindex>

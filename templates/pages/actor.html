@@ -3,13 +3,13 @@
 {%- block seo %}
     <title>Best Movies By {{ slug|replace('-',' ')|title }} | {{ web_conf.site_name }}</title>
     <meta name="description" content="Online streaming site {{ web_conf.site_name }} provide unlimited streaming access to your favorite movies and tv series."/>
-    <meta name="original-source" content="{{ web_conf.url }}{{ url_for('actor_list', slug=slug) }}"/>
-    <link rel="canonical" href="{{ web_conf.url }}{{ url_for('actor_list', slug=slug) }}"/>
+    <meta name="original-source" content="{{ url_for('index_page') }}{{ url_for('actor_list', slug=slug) }}"/>
+    <link rel="canonical" href="{{ url_for('index_page') }}{{ url_for('actor_list', slug=slug) }}"/>
     <meta property="og:locale" content="en_US"/>
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="Best Movies By {{ slug|replace('-',' ')|title }} | {{ web_conf.site_name }}"/>
     <meta property="og:description" content="{{ web_conf.desc }}"/>
-    <meta property="og:url" content="{{ web_conf.url }}{{ url_for('actor_list', slug=slug) }}"/>
+    <meta property="og:url" content="{{ url_for('index_page') }}{{ url_for('actor_list', slug=slug) }}"/>
     <meta property="og:site_name" content="{{ web_conf.site_name }}"/>
     <meta property="og:image" content="{{ web_conf.social.image }}"/>
     <meta property="fb:admins" content="{{ web_conf.social.facebook.admin }}"/>

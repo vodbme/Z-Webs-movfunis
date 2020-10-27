@@ -5,24 +5,24 @@
                 <div class="col-lg-4 footer-one">
                     <div class="footer-link">
                         <h3 class="footer-link-head">123movies</h3>
-                        <p><a title="Movies" href="{{ web_conf.url }}{{ url_for('genre_list', slug='action') }}">Movies</a></p>
-                        <p><a title="Series" href="{{ web_conf.url }}{{ url_for('film_list', slug='movies') }}">Series</a></p>
-                        <p><a title="DMCA" href="{{ web_conf.url }}{{ url_for('site_page', page='dmca') }}">DMCA</a></p>
-                        <p><a title="FAQ" href="{{ web_conf.url }}{{ url_for('site_page', page='faq') }}">FAQ</a></p>
+                        <p><a title="Movies" href="{{ url_for('index_page') }}{{ url_for('genre_list', slug='action') }}">Movies</a></p>
+                        <p><a title="Series" href="{{ url_for('index_page') }}{{ url_for('film_list', slug='movies') }}">Series</a></p>
+                        <p><a title="DMCA" href="{{ url_for('index_page') }}{{ url_for('site_page', page='dmca') }}">DMCA</a></p>
+                        <p><a title="FAQ" href="{{ url_for('index_page') }}{{ url_for('site_page', page='faq') }}">FAQ</a></p>
                     </div>
                     <div class="footer-link">
                         <h3 class="footer-link-head">Free Movies</h3>
-                        <p><a title="Fmovies" href="{{ web_conf.url }}{{ url_for('fmovies_se') }}">Fmovies</a></p>
-                        <p><a title="Gomovies" href="{{ web_conf.url }}{{ url_for('go_movies') }}">Gomovies</a></p>
-                        <p><a title="Watch5s" href="{{ web_conf.url }}{{ url_for('watch_5s') }}">Watch5s</a></p>
-                        <p><a title="Watch5free" href="{{ web_conf.url }}{{ url_for('watch_free') }}">Watchfree</a></p>
+                        <p><a title="Fmovies" href="{{ url_for('index_page') }}{{ url_for('fmovies_se') }}">Fmovies</a></p>
+                        <p><a title="Gomovies" href="{{ url_for('index_page') }}{{ url_for('go_movies') }}">Gomovies</a></p>
+                        <p><a title="Watch5s" href="{{ url_for('index_page') }}{{ url_for('watch_5s') }}">Watch5s</a></p>
+                        <p><a title="Watch5free" href="{{ url_for('index_page') }}{{ url_for('watch_free') }}">Watchfree</a></p>
                     </div>
                     <div class="footer-link end">
                         <h3 class="footer-link-head">Movies</h3>
-                        <p><a title="Action" href="{{ web_conf.url }}{{ url_for('genre_list', slug='action') }}">Action</a></p>
-                        <p><a title="History" href="{{ web_conf.url }}{{ url_for('genre_list', slug='history') }}">History</a></p>
-                        <p><a title="Thriller" href="{{ web_conf.url }}{{ url_for('genre_list', slug='thriller') }}">Thriller</a></p>
-                        <p><a title="Sci-Fi" href="{{ web_conf.url }}{{ url_for('genre_list', slug='sci-fi') }}">Sci-Fi</a></p>
+                        <p><a title="Action" href="{{ url_for('index_page') }}{{ url_for('genre_list', slug='action') }}">Action</a></p>
+                        <p><a title="History" href="{{ url_for('index_page') }}{{ url_for('genre_list', slug='history') }}">History</a></p>
+                        <p><a title="Thriller" href="{{ url_for('index_page') }}{{ url_for('genre_list', slug='thriller') }}">Thriller</a></p>
+                        <p><a title="Sci-Fi" href="{{ url_for('index_page') }}{{ url_for('genre_list', slug='sci-fi') }}">Sci-Fi</a></p>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -46,7 +46,7 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="col-lg-4 footer-copyright">
-                    <p><a href="{{ web_conf.url }}" class="mv-ft-logo"></a></p>
+                    <p><a href="{{ url_for('index_page') }}" class="mv-ft-logo"></a></p>
                     <p>Copyright &copy; {{ now.year }} {{ web_conf.site_name }}. All Rights Reserved</p>
                     <small>Disclaimer: This site does not store any files on its server. All contents are provided by
                         non-affiliated third parties.
