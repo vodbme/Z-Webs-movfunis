@@ -3,13 +3,13 @@
 {%- block seo %}
     <title>Top IMDB Movies &amp; Series Online | {{ web_conf.site_name }}</title>
     <meta name="description" content="Watch HD Movies Online For Free and Download the latest movies without Registration at 123movies.org"/>
-    <meta name="original-source" content="{{ url_for('index_page') }}{{ url_for('actor_list', slug=slug) }}"/>
-    <link rel="canonical" href="{{ url_for('index_page') }}{{ url_for('actor_list', slug=slug) }}"/>
+    <meta name="original-source" content="{{ gsite }}{{ url_for('actor_list', slug=slug) }}"/>
+    <link rel="canonical" href="{{ gsite }}{{ url_for('actor_list', slug=slug) }}"/>
     <meta property="og:locale" content="en_US"/>
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="Top IMDB Movies &amp; Series Online | {{ web_conf.site_name }}"/>
     <meta property="og:description" content="Watch HD Movies Online For Free and Download the latest movies without Registration at 123movies.org"/>
-    <meta property="og:url" content="{{ url_for('index_page') }}{{ url_for('actor_list', slug=slug) }}"/>
+    <meta property="og:url" content="{{ gsite }}{{ url_for('actor_list', slug=slug) }}"/>
     <meta property="og:site_name" content="{{ web_conf.site_name }}"/>
     <meta property="og:image" content="{{ web_conf.social.image }}"/>
     <meta property="fb:admins" content="{{ web_conf.social.facebook.admin }}"/>

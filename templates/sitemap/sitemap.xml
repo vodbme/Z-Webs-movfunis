@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/main-sitemap.xsl"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <sitemap>
-        <loc>{{ url_for('index_page') }}/post-sitemap.xml</loc>
+        <loc>{{ gsite }}/post-sitemap.xml</loc>
         <lastmod>{{ time }}</lastmod>
     </sitemap>
     <sitemap>
-        <loc>{{ url_for('index_page') }}/news-sitemap.xml</loc>
+        <loc>{{ gsite }}/news-sitemap.xml</loc>
         <lastmod>{{ time }}</lastmod>
     </sitemap>
     <sitemap>
-        <loc>{{ url_for('index_page') }}/page-sitemap.xml</loc>
+        <loc>{{ gsite }}/page-sitemap.xml</loc>
         <lastmod>{{ time }}</lastmod>
     </sitemap>
     <sitemap>
-        <loc>{{ url_for('index_page') }}/genre-sitemap.xml</loc>
+        <loc>{{ gsite }}/genre-sitemap.xml</loc>
         <lastmod>{{ time }}</lastmod>
     </sitemap>
     <sitemap>
-        <loc>{{ url_for('index_page') }}/country-sitemap.xml</loc>
+        <loc>{{ gsite }}/country-sitemap.xml</loc>
         <lastmod>{{ time }}</lastmod>
     </sitemap>
     <sitemap>
-        <loc>{{ url_for('index_page') }}/actor-sitemap.xml</loc>
+        <loc>{{ gsite }}/actor-sitemap.xml</loc>
         <lastmod>{{ time }}</lastmod>
     </sitemap>
     <sitemap>
-        <loc>{{ url_for('index_page') }}/director-sitemap.xml</loc>
+        <loc>{{ gsite }}/director-sitemap.xml</loc>
         <lastmod>{{ time }}</lastmod>
     </sitemap>
     <sitemap>
-        <loc>{{ url_for('index_page') }}/tag-sitemap.xml</loc>
+        <loc>{{ gsite }}/tag-sitemap.xml</loc>
         <lastmod>{{ time }}</lastmod>
     </sitemap>
     <sitemap>
-        <loc>{{ url_for('index_page') }}/release-sitemap.xml</loc>
+        <loc>{{ gsite }}/release-sitemap.xml</loc>
         <lastmod>{{ time }}</lastmod>
     </sitemap>
     <sitemap>
-        <loc>{{ url_for('index_page') }}/video-sitemap.xml</loc>
+        <loc>{{ gsite }}/video-sitemap.xml</loc>
         <lastmod>{{ time }}</lastmod>
     </sitemap>
 </sitemapindex>

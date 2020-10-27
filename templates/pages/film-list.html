@@ -3,13 +3,13 @@
 {%- block seo %}
     <title>Watch {{ slug|title }} online free on 123movies.org</title>
     <meta name="description" content="Watch {{ slug|title }} Online For Free and Download the {{ slug|title }} series without Registration at 123movies"/>
-    <meta name="original-source" content="{{ url_for('index_page') }}{{ url_for('film_list', slug=slug, page=cp) }}"/>
-    <link rel="canonical" href="{{ url_for('index_page') }}{{ url_for('film_list', slug=slug, page=cp) }}"/>
+    <meta name="original-source" content="{{ gsite }}{{ url_for('film_list', slug=slug, page=cp) }}"/>
+    <link rel="canonical" href="{{ gsite }}{{ url_for('film_list', slug=slug, page=cp) }}"/>
     <meta property="og:locale" content="en_US"/>
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="Watch {{ slug|title }} online free on 123movies.org"/>
     <meta property="og:description" content="Watch {{ slug|title }} Online For Free and Download the {{ slug|title }} series without Registration at 123movies"/>
-    <meta property="og:url" content="{{ url_for('index_page') }}{{ url_for('film_list', slug=slug, page=cp) }}"/>
+    <meta property="og:url" content="{{ gsite }}{{ url_for('film_list', slug=slug, page=cp) }}"/>
     <meta property="og:site_name" content="{{ web_conf.site_name }}"/>
     <meta property="og:image" content="{{ web_conf.social.image }}"/>
     <meta property="fb:admins" content="{{ web_conf.social.facebook.admin }}"/>

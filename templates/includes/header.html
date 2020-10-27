@@ -1,14 +1,14 @@
 <header>
     <div class="container">
         <div class="header-logo">
-            <a title="Watch Your Favorite Movies Online" href="{{ url_for('index_page') }}" id="logo"></a>
+            <a title="Watch Your Favorite Movies Online" href="{{ gsite }}" id="logo"></a>
         </div>
         <div class="mobile-menu"><i class="fa fa-reorder"></i></div>
         <div class="mobile-search"><i class="fa fa-search"></i></div>
         <div id="menu">
             <ul class="top-menu">
                 <li class="">
-                    <a href="{{ url_for('index_page') }}{{ url_for('page_home') }}" title="Home">HOME</a>
+                    <a href="{{ gsite }}{{ url_for('page_home') }}" title="Home">HOME</a>
                 </li>
                 <li class="">
                     <a href="#" title="Genre">GENRE</a>
@@ -16,7 +16,7 @@
                         <ul class="sub-menu">
                             {% if all_genre %}
                             {% for genres in all_genre.genre %}
-                            <li><a href="{{ url_for('index_page') }}{{ url_for('genre_list', slug=genres['slug']) }}" title="{{ genres['name'] }}">{{ genres['name'] }}</a></li>
+                            <li><a href="{{ gsite }}{{ url_for('genre_list', slug=genres['slug']) }}" title="{{ genres['name'] }}">{{ genres['name'] }}</a></li>
                             {% endfor %}
                             {% endif %}
                         </ul>
@@ -29,18 +29,18 @@
                         <ul class="sub-menu">
                             {% if all_country %}
                             {% for country in all_country.country %}
-                            <li><a href="{{ url_for('index_page') }}{{ url_for('country_list', slug=country['slug']) }}" title="{{ country['name'] }}">{{ country['name'] }}</a></li>
+                            <li><a href="{{ gsite }}{{ url_for('country_list', slug=country['slug']) }}" title="{{ country['name'] }}">{{ country['name'] }}</a></li>
                             {% endfor %}
                             {% endif %}
                         </ul>
                         <div class="clearfix"></div>
                     </div>
                 </li>
-                <li><a href="{{ url_for('index_page') }}{{ url_for('film_list', slug='series') }}" title="TV - Series">TV-SERIES</a></li>
-                <li><a href="{{ url_for('index_page') }}{{ url_for('film_list', slug='movies') }}" title="Movies">MOVIES</a></li>
-                <li><a href="{{ url_for('index_page') }}{{ url_for('top_imdb') }}" title="Top IMDb">TOP IMDb</a></li>
-                <li><a href="{{ url_for('index_page') }}{{ url_for('az_list') }}" title="A-Z List">A - Z LIST</a></li>
-                <li><a href="{{ url_for('index_page') }}{{ url_for('articles') }}" title="News">NEWS</a></li>
+                <li><a href="{{ gsite }}{{ url_for('film_list', slug='series') }}" title="TV - Series">TV-SERIES</a></li>
+                <li><a href="{{ gsite }}{{ url_for('film_list', slug='movies') }}" title="Movies">MOVIES</a></li>
+                <li><a href="{{ gsite }}{{ url_for('top_imdb') }}" title="Top IMDb">TOP IMDb</a></li>
+                <li><a href="{{ gsite }}{{ url_for('az_list') }}" title="A-Z List">A - Z LIST</a></li>
+                <li><a href="{{ gsite }}{{ url_for('articles') }}" title="News">NEWS</a></li>
             </ul>
             <div class="clearfix"></div>
         </div>

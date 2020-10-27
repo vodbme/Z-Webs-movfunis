@@ -3,13 +3,13 @@
 {%- block seo %}
     <title>Free Movies Online by {{ data['name'] }}</title>
     <meta name="description" content="{{ data['name'] }} provide unlimited Free Movies Streaming without Registration. Watch Movies online on {{ data['name'] }}"/>
-    <meta name="original-source" content="{{ url_for('index_page') }}{{ slug }}"/>
-    <link rel="canonical" href="{{ url_for('index_page') }}{{ slug }}"/>
+    <meta name="original-source" content="{{ gsite }}{{ slug }}"/>
+    <link rel="canonical" href="{{ gsite }}{{ slug }}"/>
     <meta property="og:locale" content="en_US"/>
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="Watch {{ skey|title }} for free in HD"/>
     <meta property="og:description" content="Watch {{ skey|title }} for free online in high quality"/>
-    <meta property="og:url" content="{{ url_for('index_page') }}{{ slug }}"/>
+    <meta property="og:url" content="{{ gsite }}{{ slug }}"/>
     <meta property="og:site_name" content="{{ web_conf.site_name }}"/>
     <meta property="og:image" content="{{ web_conf.social.image }}"/>
     <meta property="fb:admins" content="{{ web_conf.social.facebook.admin }}"/>

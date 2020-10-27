@@ -3,13 +3,13 @@
 {%- block seo %}
     <title>DMCA Report - 123movies.org</title>
     <meta name="description" content="123Movies is an online service provider as defined in the Digital Millennium Copyright Act."/>
-    <meta name="original-source" content="{{ url_for('index_page') }}{{ url_for('site_page', page=page) }}"/>
-    <link rel="canonical" href="{{ url_for('index_page') }}{{ url_for('site_page', page=page) }}"/>
+    <meta name="original-source" content="{{ gsite }}{{ url_for('site_page', page=page) }}"/>
+    <link rel="canonical" href="{{ gsite }}{{ url_for('site_page', page=page) }}"/>
     <meta property="og:locale" content="en_US"/>
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="DMCA Report - 123movies.org"/>
     <meta property="og:description" content="123Movies is an online service provider as defined in the Digital Millennium Copyright Act."/>
-    <meta property="og:url" content="{{ url_for('index_page') }}{{ url_for('site_page', page=page) }}"/>
+    <meta property="og:url" content="{{ gsite }}{{ url_for('site_page', page=page) }}"/>
     <meta property="og:site_name" content="{{ web_conf.site_name }}"/>
     <meta property="og:image" content="{{ web_conf.social.image }}"/>
     <meta property="fb:admins" content="{{ web_conf.social.facebook.admin }}"/>

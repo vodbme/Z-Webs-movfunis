@@ -24,7 +24,7 @@ dblog = clientlog['vxzusr']
 wcdn = "https://cdn.123movies.fun"
 strm_uri = "https://crewplayer.fun"
 imgcdn = "https://img.vxdn.net"
-host_url = ""
+host_url = "https://123moviesfun.is"
 
 per_page = 40
 

@@ -3,13 +3,13 @@
 {%- block seo %}
     <title>Watch Movies Online Free - 123movies.org</title>
     <meta name="description" content="Watch HD Movies Online For Free and Download the latest movies without Registration at 123movies"/>
-    <meta name="original-source" content="{{ url_for('index_page') }}{{ url_for('page_home') }}"/>
-    <link rel="canonical" href="{{ url_for('index_page') }}{{ url_for('page_home') }}"/>
+    <meta name="original-source" content="{{ gsite }}{{ url_for('page_home') }}"/>
+    <link rel="canonical" href="{{ gsite }}{{ url_for('page_home') }}"/>
     <meta property="og:locale" content="en_US"/>
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="Watch Movies Online Free - 123movies.org"/>
     <meta property="og:description" content="Watch HD Movies Online For Free and Download the latest movies without Registration at 123movies"/>
-    <meta property="og:url" content="{{ url_for('index_page') }}{{ url_for('page_home') }}"/>
+    <meta property="og:url" content="{{ gsite }}{{ url_for('page_home') }}"/>
     <meta property="og:site_name" content="{{ web_conf.site_name }}"/>
     <meta property="og:image" content="{{ web_conf.social.image }}"/>
     <meta property="fb:admins" content="{{ web_conf.social.facebook.admin }}"/>
@@ -93,13 +93,13 @@
             <div class="movies-list-wrap mlw-latestmovie">
                 <div class="ml-title">
                     <span class="pull-left">Latest Movies <i class="fa fa-chevron-right ml10"></i></span>
-                    <a href="{{ url_for('index_page') }}{{ url_for('film_list', slug='movies') }}" class="pull-right cat-more">View more »</a>
+                    <a href="{{ gsite }}{{ url_for('film_list', slug='movies') }}" class="pull-right cat-more">View more »</a>
                     <div class="clearfix"></div>
                 </div>
                 <div class="movies-list movies-list-full tab-pane in fade active">
                     {% for item in l_m %}
                         <div data-movie-id="{{ item['data_id'] }}" class="ml-item">
-                            <a href="{{ url_for('index_page') }}{{ url_for('film_page', slug=item['slug']) }}" data-url="{{ url_for('film_info', mid=item['data_id']) }}" class="ml-mask jt" title="{{ item['title'] }}">
+                            <a href="{{ gsite }}{{ url_for('film_page', slug=item['slug']) }}" data-url="{{ url_for('film_info', mid=item['data_id']) }}" class="ml-mask jt" title="{{ item['title'] }}">
                                 <span class="mli-quality">{{ item['quality'] }}</span>
                                 <img data-src="https://{{ web_conf['imgcdn'] }}/p-max/200/{{ item['slug'] }}.jpg" class="lazy thumb mli-thumb" alt="{{ item['title'] }}">
                                 <div class="mli-info">
@@ -114,13 +114,13 @@
             <div class="movies-list-wrap mlw-featured">
                 <div class="ml-title">
                     <span class="pull-left">Latest TV-Series <i class="fa fa-chevron-right ml10"></i></span>
-                    <a href="{{ url_for('index_page') }}{{ url_for('film_list', slug='series') }}" class="pull-right cat-more">View more »</a>
+                    <a href="{{ gsite }}{{ url_for('film_list', slug='series') }}" class="pull-right cat-more">View more »</a>
                     <div class="clearfix"></div>
                 </div>
                 <div class="movies-list movies-list-full">
                     {% for item in l_s %}
                         <div data-movie-id="{{ item['data_id'] }}" class="ml-item">
-                            <a href="{{ url_for('index_page') }}{{ url_for('film_page', slug=item['slug']) }}" data-url="{{ url_for('film_info', mid=item['data_id']) }}" class="ml-mask jt" title="{{ item['title'] }}">
+                            <a href="{{ gsite }}{{ url_for('film_page', slug=item['slug']) }}" data-url="{{ url_for('film_info', mid=item['data_id']) }}" class="ml-mask jt" title="{{ item['title'] }}">
                                 <span class="mli-eps">Eps<i>{{ item['episode'] }}</i></span>
                                 <img data-src="https://{{ web_conf['imgcdn'] }}/p-max/200/{{ item['slug'] }}.jpg" class="lazy thumb mli-thumb" alt="{{ item['title'] }}">
                                 <div class="mli-info">

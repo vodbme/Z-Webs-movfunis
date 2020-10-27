@@ -3,13 +3,13 @@
 {%- block seo %}
     <title>123Movies.org Blog and Latest Movie News</title>
     <meta name="description" content="Read about latest and upcoming releases of movies and tv shows on 123movies."/>
-    <meta name="original-source" content="{{ url_for('index_page') }}{{ url_for('articles', page=cp) }}"/>
-    <link rel="canonical" href="{{ url_for('index_page') }}{{ url_for('articles', page=cp) }}"/>
+    <meta name="original-source" content="{{ gsite }}{{ url_for('articles', page=cp) }}"/>
+    <link rel="canonical" href="{{ gsite }}{{ url_for('articles', page=cp) }}"/>
     <meta property="og:locale" content="en_US"/>
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="123Movies.org Blog and Latest Movie News"/>
     <meta property="og:description" content="Read about latest and upcoming releases of movies and tv shows on 123movies."/>
-    <meta property="og:url" content="{{ url_for('index_page') }}{{ url_for('articles', page=cp) }}"/>
+    <meta property="og:url" content="{{ gsite }}{{ url_for('articles', page=cp) }}"/>
     <meta property="og:site_name" content="{{ web_conf.site_name }}"/>
     <meta property="og:image" content="{{ web_conf.social.image }}"/>
     <meta property="fb:admins" content="{{ web_conf.social.facebook.admin }}"/>
