@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
     {% for item in items %}
     <url>
-		<loc>{{ gsite }}{{ url_for('film_watch', slug=slug) }}</loc>
+		<loc>{{ host_uri }}{{ url_for('film_watch', slug=slug) }}</loc>
 		<video:video>
 			<video:title>{{ item['title'] }} - {{ web_conf.domain }}</video:title>
             <video:publication_date>{{ time }}</video:publication_date>
@@ -14,7 +14,7 @@
 			<video:height>390</video:height>
 			<video:category>{{ item['type'] }}</video:category>
 			<video:family_friendly>yes</video:family_friendly>
-			<video:uploader info='{{ gsite }}'>123movies</video:uploader>
+			<video:uploader info='{{ host_uri }}'>123movies</video:uploader>
 		</video:video>
 	</url>
     {% endfor %}

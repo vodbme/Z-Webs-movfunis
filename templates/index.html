@@ -3,13 +3,13 @@
 {%- block seo %}
     <title>Watch Movies Online Free - 123movies.org</title>
     <meta name="description" content="Watch HD Movies Online For Free and Download the latest movies without Registration at 123movies"/>
-    <meta name="original-source" content="{{ gsite }}{{ url_for('page_home') }}"/>
-    <link rel="canonical" href="{{ gsite }}{{ url_for('page_home') }}"/>
+    <meta name="original-source" content="{{ host_uri }}{{ url_for('page_home') }}"/>
+    <link rel="canonical" href="{{ host_uri }}{{ url_for('page_home') }}"/>
     <meta property="og:locale" content="en_US"/>
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="Watch Movies Online Free - 123movies.org"/>
     <meta property="og:description" content="Watch HD Movies Online For Free and Download the latest movies without Registration at 123movies"/>
-    <meta property="og:url" content="{{ gsite }}{{ url_for('page_home') }}"/>
+    <meta property="og:url" content="{{ host_uri }}{{ url_for('page_home') }}"/>
     <meta property="og:site_name" content="{{ web_conf.site_name }}"/>
     <meta property="og:image" content="{{ web_conf.social.image }}"/>
     <meta property="fb:admins" content="{{ web_conf.social.facebook.admin }}"/>
@@ -39,7 +39,7 @@
 <div id="main">
     <div class="container">
         <div class="home-main">
-            <div class="hm-logo"><a href="{{ gsite }}" title="Watch Your Favorite Movies Online"></a>
+            <div class="hm-logo"><a href="{{ host_uri }}" title="Watch Your Favorite Movies Online"></a>
             </div>
             <div class="addthis_inline_share_toolbox mb10"></div>
             <div id="hm-search">
@@ -55,7 +55,7 @@
                 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2F123moviesfun%2F&amp;width=134&amp;layout=button_count&amp;action=like&amp;size=large&amp;show_faces=false&amp;share=true&amp;height=46&amp;appId=172103306764562" width="180" height="28" style="border:none;overflow:hidden;margin-left:10px" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
             </div>
-            <div class="hm-button"><a href="{{ gsite }}{{ url_for('page_home') }}" class="btn btn-lg btn-successful">Use the old 123Movies? Click here</a></div>
+            <div class="hm-button"><a href="{{ host_uri }}{{ url_for('page_home') }}" class="btn btn-lg btn-successful">Use the old 123Movies? Click here</a></div>
         </div>
     </div>
 </div>

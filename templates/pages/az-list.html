@@ -3,13 +3,13 @@
 {%- block seo %}
     <title>Library Collection of All Movies on 123Movies.org</title>
     <meta name="description" content="Library Collection of All free Movies on 123Movies.org. Watch any movie here online"/>
-    <meta name="original-source" content="{{ gsite }}{{ url_for('az_list', libs=libs, page=cp) }}"/>
-    <link rel="canonical" href="{{ gsite }}{{ url_for('az_list', libs=libs, page=cp) }}"/>
+    <meta name="original-source" content="{{ host_uri }}{{ url_for('az_list', libs=libs, page=cp) }}"/>
+    <link rel="canonical" href="{{ host_uri }}{{ url_for('az_list', libs=libs, page=cp) }}"/>
     <meta property="og:locale" content="en_US"/>
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="Library Collection of All Movies on 123Movies.org"/>
     <meta property="og:description" content="Library Collection of All free Movies on 123Movies.org. Watch any movie here online"/>
-    <meta property="og:url" content="{{ gsite }}{{ url_for('az_list', libs=libs, page=cp) }}"/>
+    <meta property="og:url" content="{{ host_uri }}{{ url_for('az_list', libs=libs, page=cp) }}"/>
     <meta property="og:site_name" content="{{ web_conf.site_name }}"/>
     <meta property="og:image" content="{{ web_conf.social.image }}"/>
     <meta property="fb:admins" content="{{ web_conf.social.facebook.admin }}"/>

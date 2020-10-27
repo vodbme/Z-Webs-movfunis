@@ -2,7 +2,7 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     {% for item in items %}
     <url>
-        <loc>{{ gsite }}/film/{{ item['slug'] }}/</loc>
+        <loc>{{ host_uri }}/film/{{ item['slug'] }}/</loc>
         <lastmod>{{ time }}</lastmod>
         <image:image>
 			<image:loc>https://{{ web_conf.imgcdn }}/cover/{{ item['data_id'] }}/{{ item['slug'] }}-1200.jpg</image:loc>

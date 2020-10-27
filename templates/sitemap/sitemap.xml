@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/main-sitemap.xsl"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <sitemap>
-        <loc>{{ gsite }}/post-sitemap.xml</loc>
+        <loc>{{ host_uri }}/post-sitemap.xml</loc>
         <lastmod>{{ time }}</lastmod>
     </sitemap>
     <sitemap>
-        <loc>{{ gsite }}/news-sitemap.xml</loc>
+        <loc>{{ host_uri }}/news-sitemap.xml</loc>
         <lastmod>{{ time }}</lastmod>
     </sitemap>
     <sitemap>
-        <loc>{{ gsite }}/page-sitemap.xml</loc>
+        <loc>{{ host_uri }}/page-sitemap.xml</loc>
         <lastmod>{{ time }}</lastmod>
     </sitemap>
     <sitemap>
-        <loc>{{ gsite }}/genre-sitemap.xml</loc>
+        <loc>{{ host_uri }}/genre-sitemap.xml</loc>
         <lastmod>{{ time }}</lastmod>
     </sitemap>
     <sitemap>
-        <loc>{{ gsite }}/country-sitemap.xml</loc>
+        <loc>{{ host_uri }}/country-sitemap.xml</loc>
         <lastmod>{{ time }}</lastmod>
     </sitemap>
     <sitemap>
-        <loc>{{ gsite }}/actor-sitemap.xml</loc>
+        <loc>{{ host_uri }}/actor-sitemap.xml</loc>
         <lastmod>{{ time }}</lastmod>
     </sitemap>
     <sitemap>
-        <loc>{{ gsite }}/director-sitemap.xml</loc>
+        <loc>{{ host_uri }}/director-sitemap.xml</loc>
         <lastmod>{{ time }}</lastmod>
     </sitemap>
     <sitemap>
-        <loc>{{ gsite }}/tag-sitemap.xml</loc>
+        <loc>{{ host_uri }}/tag-sitemap.xml</loc>
         <lastmod>{{ time }}</lastmod>
     </sitemap>
     <sitemap>
-        <loc>{{ gsite }}/release-sitemap.xml</loc>
+        <loc>{{ host_uri }}/release-sitemap.xml</loc>
         <lastmod>{{ time }}</lastmod>
     </sitemap>
     <sitemap>
-        <loc>{{ gsite }}/video-sitemap.xml</loc>
+        <loc>{{ host_uri }}/video-sitemap.xml</loc>
         <lastmod>{{ time }}</lastmod>
     </sitemap>
 </sitemapindex>

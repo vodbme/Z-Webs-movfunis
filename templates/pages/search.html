@@ -3,13 +3,13 @@
 {%- block seo %}
     <title>Watch {{ skey|title }} for free in HD</title>
     <meta name="description" content="Watch {{ skey|title }} for free online in high quality"/>
-    <meta name="original-source" content="{{ gsite }}{{ url_for('searching', skey=skey, page=cp) }}"/>
-    <link rel="canonical" href="{{ gsite }}{{ url_for('searching', skey=skey, page=cp) }}"/>
+    <meta name="original-source" content="{{ host_uri }}{{ url_for('searching', skey=skey, page=cp) }}"/>
+    <link rel="canonical" href="{{ host_uri }}{{ url_for('searching', skey=skey, page=cp) }}"/>
     <meta property="og:locale" content="en_US"/>
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="Watch {{ skey|title }} for free in HD"/>
     <meta property="og:description" content="Watch {{ skey|title }} for free online in high quality"/>
-    <meta property="og:url" content="{{ gsite }}{{ url_for('searching', skey=skey, page=cp) }}"/>
+    <meta property="og:url" content="{{ host_uri }}{{ url_for('searching', skey=skey, page=cp) }}"/>
     <meta property="og:site_name" content="{{ web_conf.site_name }}"/>
     <meta property="og:image" content="{{ web_conf.social.image }}"/>
     <meta property="fb:admins" content="{{ web_conf.social.facebook.admin }}"/>

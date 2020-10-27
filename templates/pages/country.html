@@ -3,13 +3,13 @@
 {%- block seo %}
     <title>Top Best Movies from {{ slug|replace('-',' ')|title }}</title>
     <meta name="description" content="Watch best movies from {{ slug|replace('-',' ')|title }} online free in HD"/>
-    <meta name="original-source" content="{{ gsite }}{{ url_for('country_list', slug=slug, page=cp) }}"/>
-    <link rel="canonical" href="{{ gsite }}{{ url_for('country_list', slug=slug, page=cp) }}"/>
+    <meta name="original-source" content="{{ host_uri }}{{ url_for('country_list', slug=slug, page=cp) }}"/>
+    <link rel="canonical" href="{{ host_uri }}{{ url_for('country_list', slug=slug, page=cp) }}"/>
     <meta property="og:locale" content="en_US"/>
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="Top Best Movies from {{ slug|replace('-',' ')|title }}"/>
     <meta property="og:description" content="Watch best movies from {{ slug|replace('-',' ')|title }} online free in HD"/>
-    <meta property="og:url" content="{{ gsite }}{{ url_for('country_list', slug=slug, page=cp) }}"/>
+    <meta property="og:url" content="{{ host_uri }}{{ url_for('country_list', slug=slug, page=cp) }}"/>
     <meta property="og:site_name" content="{{ web_conf.site_name }}"/>
     <meta property="og:image" content="{{ web_conf.social.image }}"/>
     <meta property="fb:admins" content="{{ web_conf.social.facebook.admin }}"/>

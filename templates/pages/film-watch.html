@@ -3,13 +3,13 @@
 {%- block seo %}
     <title>Watch {{ items['title'] }} online free in HD - 123movies.org</title>
     <meta name="description" content="Watch {{ items['title'] }} online without registration in HD on 123movies for free."/>
-    <meta name="original-source" content="{{ gsite }}{{ url_for('film_watch', slug=slug) }}"/>
-    <link rel="canonical" href="{{ gsite }}{{ url_for('film_watch', slug=slug) }}"/>
+    <meta name="original-source" content="{{ host_uri }}{{ url_for('film_watch', slug=slug) }}"/>
+    <link rel="canonical" href="{{ host_uri }}{{ url_for('film_watch', slug=slug) }}"/>
     <meta property="og:locale" content="en_US"/>
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="Watch {{ items['title'] }} online free in HD - 123movies.org"/>
     <meta property="og:description" content="Watch {{ items['title'] }} online without registration in HD on 123movies for free."/>
-    <meta property="og:url" content="{{ gsite }}{{ url_for('film_watch', slug=slug) }}"/>
+    <meta property="og:url" content="{{ host_uri }}{{ url_for('film_watch', slug=slug) }}"/>
     <meta property="og:site_name" content="{{ web_conf.site_name }}"/>
     <meta property="og:image" content="{{ web_conf.social.image }}"/>
     <meta property="fb:admins" content="{{ web_conf.social.facebook.admin }}"/>
@@ -242,7 +242,7 @@
         function disqus() {
             if (!disqus_loaded)  {
                 var disqus_config = function () {
-                    this.page.url = "{{ gsite }}{{ url_for('film_watch', slug=slug) }}";
+                    this.page.url = "{{ host_uri }}{{ url_for('film_watch', slug=slug) }}";
                     this.page.identifier = "{{ items['data_id'] }}";
                 };
                 disqus_loaded = true;

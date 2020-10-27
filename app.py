@@ -974,7 +974,7 @@ def set_config():
     ag = all_genre()
     ac = all_country()
     now = datetime.utcnow()
-    return dict(web_conf=wc, all_genre=ag, all_country=ac, gsite=md.gsite, now=now)
+    return dict(web_conf=wc, all_genre=ag, all_country=ac, gsite=md.gsite, host_uri=md.host_url, now=now)
 
 
 if __name__ == '__main__':
