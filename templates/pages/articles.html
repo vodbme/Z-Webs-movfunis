@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{%- block seo %}
+    <title>{{ items['title'] }} | {{ web_conf.site_name }}</title>
+    <meta name="description" content="{{ items['short'] }}"/>
+    <meta name="original-source" content="{{ web_conf.url }}{{ url_for('actor_list', slug=slug) }}"/>
+    <link rel="canonical" href="{{ web_conf.url }}{{ url_for('actor_list', slug=slug) }}"/>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="{{ items['title'] }} | {{ web_conf.site_name }}"/>
+    <meta property="og:description" content="{{ items['short'] }}"/>
+    <meta property="og:url" content="{{ web_conf.url }}{{ url_for('actor_list', slug=slug) }}"/>
+    <meta property="og:site_name" content="{{ web_conf.site_name }}"/>
+    <meta property="og:image" content="{{ web_conf.social.image }}"/>
+    <meta property="fb:admins" content="{{ web_conf.social.facebook.admin }}"/>
+    <meta property="fb:pages" content="{{ web_conf.social.facebook.pages }}"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:description" content="{{ items['short'] }}"/>
+    <meta name="twitter:title" content="{{ items['title'] }} | {{ web_conf.site_name }}"/>
+    <meta name="twitter:site" content="{{ web_conf.site_name }}"/>
+    <meta name="twitter:image" content="{{ web_conf.social.image }}"/>
+    <meta name="twitter:creator" content="@{{ web_conf.social.twitter.name }}"/>
+{% endblock -%}
+
+{%- block css %}
+    {% assets filters="cssmin", output="css/app-articles.css", "css/fonts.css", "css/bootstrap.min.css", "css/fa.min.css", "css/qtip.css", "css/style.css", "css/custom.css" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}" type="text/css"/>
+    {% endassets %}
+{% endblock -%}
+
+{% block body %}
+<div id="main" class="page-news">
+    <div class="container">
+        <div class="pad"></div>
+        <div class="main-content main-news">
+            <div id="bread">
+                <ol class="breadcrumb">
+                    <li><a href="{{ url_for('page_home') }}">Home</a></li>
+                    <li><a href="{{ url_for('articles') }}">News</a></li>
+                    <li class="active">{{ items['title'] }}</li>
+                </ol>
+            </div>
+            <div class="news-block">
+                <div class="box news-content news-view">
+                    <div class="box-content news-view-content">
+                        <div class="nvc-thumb" style="background-image: url(https://{{ web_conf['imgcdn'] }}/article-cover/{{ items['data_id'] }}/{{ items['slug'] }}-800.jpg);"></div>
+                        <h1 class="title">{{ items['title'] }}</h1>
+                        <p class="time">
+                            <i class="fa fa-clock-o mr5"></i>Posted {{ items['post_date'] }}
+                            <span class="ml10"><i class="fa fa-eye mr5"></i>{{ items['view'] }}</span>
+                            <a href="#comment" class="ml10 view-comment" style="color: #333;">
+                                <i class="fa fa-comments mr5"></i><span id="fb-comment-count">0</span>
+                            </a>
+                        </p>
+                        {{ items['content'] | safe }}
+                        <div class="tags" style="margin-top: 30px;">
+                            <i class="fa fa-tags mr5"></i>TAGs:
+                            {% for keyword in items.keyword %}
+                            <a href="#" title="{{ keyword.name }}">{{ keyword.name }}</a>{{ "," if not loop.last }}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="content-padding" style="border-top: 20px solid #e5e5e5;" id="comment">
+                        <h3 class="title">Comments</h3>
+                        <div class="fb-comments"></div>
+                    </div>
+                </div>
+                <div class="news-sidebar">
+                    <div class="box hot-news">
+                        <div class="box-head">
+                            <div class="nlh">HOT ARTICLES</div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="ns-list">
+                            {% for hot in hot_ar %}
+                            <div class="news-list-item">
+                                <div class="info">
+                                    <h2>
+                                        <a href="/articles/view/{{ hot['slug'] }}" title="">{{ hot['title'] }}</a>
+                                    </h2>
+                                    <div class="time">
+                                        <p class="label label-default label-sm mr10">News</p>
+                                        <i class="fa fa-clock-o mr5"></i>Posted {{ hot['post_date'] }}
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block jslink %}
+    {% assets filters="jsmin", output="js/app-articles.js", "js/jquery.min.js", "js/bootstrap.min.js", "js/lazyload.js", "js/cookie.js", "js/qtip.js", "js/main.js" %}
+     <script src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{%- block seo %}
+    <title>DMCA Report - 123movies.org</title>
+    <meta name="description" content="123Movies is an online service provider as defined in the Digital Millennium Copyright Act."/>
+    <meta name="original-source" content="{{ web_conf.url }}{{ url_for('site_page', page=page) }}"/>
+    <link rel="canonical" href="{{ web_conf.url }}{{ url_for('site_page', page=page) }}"/>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="DMCA Report - 123movies.org"/>
+    <meta property="og:description" content="123Movies is an online service provider as defined in the Digital Millennium Copyright Act."/>
+    <meta property="og:url" content="{{ web_conf.url }}{{ url_for('site_page', page=page) }}"/>
+    <meta property="og:site_name" content="{{ web_conf.site_name }}"/>
+    <meta property="og:image" content="{{ web_conf.social.image }}"/>
+    <meta property="fb:admins" content="{{ web_conf.social.facebook.admin }}"/>
+    <meta property="fb:pages" content="{{ web_conf.social.facebook.pages }}"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:description" content="123Movies is an online service provider as defined in the Digital Millennium Copyright Act."/>
+    <meta name="twitter:title" content="DMCA Report - 123movies.org"/>
+    <meta name="twitter:site" content="{{ web_conf.site_name }}"/>
+    <meta name="twitter:image" content="{{ web_conf.social.image }}"/>
+    <meta name="twitter:creator" content="@{{ web_conf.social.twitter.name }}"/>
+{% endblock -%}
+
+{%- block css %}
+    <link rel="stylesheet" href="{{ web_conf.cdnku }}/css/app-dmca.css" type="text/css"/>
+{% endblock -%}
+
+{% block body %}
+<div id="main" class="page-detail page-profiles">
+    <div class="container">
+        <div class="pad"></div>
+        <div class="main-content main-detail">
+            <div id="bread">
+                <ol class="breadcrumb">
+                    <li><a href="{{ url_for('page_home') }}">Home</a></li>
+                    <li class="active">{{ items['name'] }}</li>
+                </ol>
+            </div>
+            <div class="infopage">
+                <div class="infopage-head">{{ items['name'] }}</div>
+                <div class="content">
+                    <p>In accordance with the Digital Millennium Copyright Act of 1998 (the text of which may be found on the U.S. Copyright Office website at http://lcweb.loc.gov/copyright/), Movies123 will respond expeditiously to claims of copyright infringement that are reported to Movies123’s designated copyright agent identified below. Please also note that under Section 512(f) any person who knowingly materially misrepresents that material or activity is infringing may be subject to liability. Movies123 reserves the right at its sole and entire discretion, to remove content and terminate the accounts of Movies123 users who infringe, or appear to infringe, the intellectual property or other rights of third parties.</p>
+                    <p>If you believe that your copywriten work has been copied in a way that constitutes copyright infringement, please provide Movies123’s copyright agent the following information:</p>
+                    <ol>
+                        <li>A physical or electronic signature of a person authorized to act on behalf of the owner of an exclusive right that is allegedly infringed.</li>
+                        <li>Identification of the copyright work claimed to have been infringed, or, if multiple copyrighted works at a single online site are covered by a single notification, a representative list of such works at the Website.</li>
+                        <li>Identification of the material that is claimed to be infringing or to be the subject of infringing activity and that is to be removed or access to which is to be disabled, and information reasonably sufficient to permit Movies123 to locate the material.</li>
+                        <li>Information reasonably sufficient to permit Movies123 to contact the complaining party, including a name, address, telephone number and, if available, an email address at which the complaining party may be contacted.</li>
+                        <li>A statement that the complaining party has a good-faith belief that use of the material in the manner complained of is not authorized by the copyright owner, its agent or the law.</li>
+                        <li>A statement that the information in the notification is accurate and, under penalty of perjury, that the complaining party is authorized to act on behalf of the owner of an exclusive right that is allegedly infringed.</li>
+                    </ol>
+                    <p>All claims of copyright infringement on or regarding this Website should be delivered to Movies123’s designated copyright agent at the following address:</p>
+                    <p>Copyright Contact Information:<br/>Please contact us at <strong>dmca@123movies.fun</strong></p>
+                    <p>We apologize for any kind of misuse of our service and promise to do our best to find and terminate abusive files.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block jslink %}
+    <script src="{{ web_conf.cdnku }}/js/app-dmca.js"></script>
+{% endblock %}

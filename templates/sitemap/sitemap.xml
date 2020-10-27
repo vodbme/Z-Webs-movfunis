@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/main-sitemap.xsl"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <sitemap>
+        <loc>{{ web_conf.url }}/post-sitemap.xml</loc>
+        <lastmod>{{ time }}</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>{{ web_conf.url }}/news-sitemap.xml</loc>
+        <lastmod>{{ time }}</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>{{ web_conf.url }}/page-sitemap.xml</loc>
+        <lastmod>{{ time }}</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>{{ web_conf.url }}/genre-sitemap.xml</loc>
+        <lastmod>{{ time }}</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>{{ web_conf.url }}/country-sitemap.xml</loc>
+        <lastmod>{{ time }}</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>{{ web_conf.url }}/actor-sitemap.xml</loc>
+        <lastmod>{{ time }}</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>{{ web_conf.url }}/director-sitemap.xml</loc>
+        <lastmod>{{ time }}</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>{{ web_conf.url }}/tag-sitemap.xml</loc>
+        <lastmod>{{ time }}</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>{{ web_conf.url }}/release-sitemap.xml</loc>
+        <lastmod>{{ time }}</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>{{ web_conf.url }}/video-sitemap.xml</loc>
+        <lastmod>{{ time }}</lastmod>
+    </sitemap>
+</sitemapindex>

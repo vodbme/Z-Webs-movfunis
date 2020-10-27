@@ -1,0 +1,78 @@
+<div id="filter">
+    <div class="filter-btn">
+        <button id="filter-movies" class="btn btn-lg btn-successful">Filter movies</button>
+    </div>
+    <div class="filter-content row">
+        <div class="col-sm-2 fc-main">
+            <span class="fc-title">Sort by</span>
+            <ul class="fc-main-list">
+                <li>
+                    <a class="active" href="#"><i class="fa fa-clock-o mr5"></i>Latest</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-eye mr5"></i>Most viewed</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-heart mr5"></i>Most favorite</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-star mr5"></i>Most rating</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-fire mr5"></i>Top IMDb</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-10">
+            <div class="cs10-top">
+                <div class="fc-filmtype">
+                    <span class="fc-title">Film Type</span>
+                    <ul class="fc-filmtype-list">
+                        <li><label><input name="type" checked value="all" type="radio">All</label></li>
+                        <li><label><input name="type" value="movies" type="radio">Movies</label></li>
+                        <li><label><input name="type" value="series" type="radio">TV-Series</label></li>
+                    </ul>
+                </div>
+                <div class="fc-release">
+                    <span class="fc-title">Release</span>
+                    <ul class="fc-release-list">
+                        <li><label><input checked name="year" value="all" type="radio">All</label></li>
+                        <li><label><input value="{{ now.year }}" name="year" type="radio">{{ now.year }}</label></li>
+                        <li><label><input value="{{ now.year - 1 }}" name="year" type="radio">{{ now.year - 1 }}</label></li>
+                        <li><label><input value="{{ now.year - 2 }}" name="year" type="radio">{{ now.year - 2 }}</label></li>
+                        <li><label><input value="{{ now.year - 3 }}" name="year" type="radio">{{ now.year - 3 }}</label></li>
+                        <li><label><input value="{{ now.year - 4 }}" name="year" type="radio">{{ now.year - 4 }}</label></li>
+                        <li><label><input name="year" value="old" type="radio">Older</label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="fc-genre">
+                <span class="fc-title">Genre</span>
+                <ul class="fc-genre-list">
+                    {% for genre in all_genre['genre'] %}
+                    <li>
+                        <label>
+                            <input class="genre-ids" value="{{ genre['slug'] }}" name="genres[]" type="checkbox">{{ genre['name'] }}
+                        </label>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+            <div class="fc-country">
+                <span class="fc-title">Country</span>
+                <ul class="fc-country-list">
+                    {% for country in all_country['country'] %}
+                    <li>
+                        <label>
+                            <input class="country-ids" value="{{ country['slug'] }}" name="countries[]" type="checkbox">{{ country['name'] }}
+                        </label>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

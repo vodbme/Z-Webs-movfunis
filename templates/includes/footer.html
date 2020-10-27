@@ -1,0 +1,70 @@
+<footer>
+    <div id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 footer-one">
+                    <div class="footer-link">
+                        <h3 class="footer-link-head">123movies</h3>
+                        <p><a title="Movies" href="{{ web_conf.url }}{{ url_for('genre_list', slug='action') }}">Movies</a></p>
+                        <p><a title="Series" href="{{ web_conf.url }}{{ url_for('film_list', slug='movies') }}">Series</a></p>
+                        <p><a title="DMCA" href="{{ web_conf.url }}{{ url_for('site_page', page='dmca') }}">DMCA</a></p>
+                        <p><a title="FAQ" href="{{ web_conf.url }}{{ url_for('site_page', page='faq') }}">FAQ</a></p>
+                    </div>
+                    <div class="footer-link">
+                        <h3 class="footer-link-head">Free Movies</h3>
+                        <p><a title="Fmovies" href="{{ web_conf.url }}{{ url_for('fmovies_se') }}">Fmovies</a></p>
+                        <p><a title="Gomovies" href="{{ web_conf.url }}{{ url_for('go_movies') }}">Gomovies</a></p>
+                        <p><a title="Watch5s" href="{{ web_conf.url }}{{ url_for('watch_5s') }}">Watch5s</a></p>
+                        <p><a title="Watch5free" href="{{ web_conf.url }}{{ url_for('watch_free') }}">Watchfree</a></p>
+                    </div>
+                    <div class="footer-link end">
+                        <h3 class="footer-link-head">Movies</h3>
+                        <p><a title="Action" href="{{ web_conf.url }}{{ url_for('genre_list', slug='action') }}">Action</a></p>
+                        <p><a title="History" href="{{ web_conf.url }}{{ url_for('genre_list', slug='history') }}">History</a></p>
+                        <p><a title="Thriller" href="{{ web_conf.url }}{{ url_for('genre_list', slug='thriller') }}">Thriller</a></p>
+                        <p><a title="Sci-Fi" href="{{ web_conf.url }}{{ url_for('genre_list', slug='sci-fi') }}">Sci-Fi</a></p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="col-lg-4 footer-subs">
+                    <h3 class="footer-link-head">Subscribe</h3>
+                    <p class="desc small">
+                        Subscribe to 123movies mailing list to receive updates on movies, tv-series and news
+                    </p>
+                    <div class="form-subs mt20">
+                        <div class="subc-input pull-left" style="width:65%; margin-right: 5%;">
+                            <input type="email" placeholder="Enter your email" id="Email" name="email-footer"
+                                   class="form-control">
+                        </div>
+                        <div class="subc-submit pull-left" style="width:30%;">
+                            <button id="subscribe-submit-footer" class="btn btn-block btn-successful btn-approve"
+                                    type="button" onclick="subscribe_footer()">Subscribe
+                            </button>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="col-lg-4 footer-copyright">
+                    <p><a href="{{ web_conf.url }}" class="mv-ft-logo"></a></p>
+                    <p>Copyright &copy; {{ now.year }} {{ web_conf.site_name }}. All Rights Reserved</p>
+                    <small>Disclaimer: This site does not store any files on its server. All contents are provided by
+                        non-affiliated third parties.
+                    </small>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="footer-tags">
+                <div class="footer-tags">
+                    <a title="GoMovies">GoMovies</a>
+                    <a title="123Movies">123Movies</a>
+                    <a title="Putlocker">Putlocker</a>
+                    <a title="FMovies">FMovies</a>
+                    <a title="Watch Movies Online Free">Watch Movies Online Free</a>
+                    <a title="Free Online Movies">Free Online Movies</a>
+                    <a title="Online Movies">Online Movies</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

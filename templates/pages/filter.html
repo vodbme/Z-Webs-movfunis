@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{%- block seo %}
+    <title>Watch Full HD Movies &amp; TV-Series | {{ web_conf.site_name }}</title>
+    <meta name="description" content="Online streaming site {{ web_conf.site_name }} provide unlimited streaming access to your favorite movies and tv series."/>
+{% endblock -%}
+
+{%- block css %}
+    {% assets filters="cssmin", output="css/app-filter.css", "css/fonts.css", "css/bootstrap.min.css", "css/fa.min.css", "css/qtip.css", "css/style.css", "css/custom.css" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}" type="text/css"/>
+    {% endassets %}
+{% endblock -%}
+
+{% block body %}
+<div id="main" class="page-category">
+    <div class="container">
+        <div class="pad"></div>
+        <div class="main-content main-category">
+            <div class="movies-list-wrap mlw-category">
+                <div class="ml-title ml-title-page">
+                    <span>Filter Movies & Series {% if cp > 1 %}- Page {{ cp }}{% endif %}</span>
+                    <div class="filter-toggle"><i class="fa fa-sort mr5"></i>Filter</div>
+                    <div class="clearfix"></div>
+                </div>
+                {% include 'includes/filter.html' %}
+                <div class="movies-list movies-list-full">
+                    {% for item in items %}
+                        <div data-movie-id="{{ item['data_id'] }}" class="ml-item">
+                            <a href="{{ url_for('film_page', slug=item['slug']) }}"
+                               data-url="{{ url_for('film_info', mid=item['data_id']) }}" class="ml-mask jt"
+                               title="{{ item['title'] }}">
+                                {% if item['type'] == 'series' %}
+                                    <span class="mli-eps">Eps<i>{{ item['episode'] }}</i></span>
+                                {% elif item['type'] == 'movies' %}
+                                    <span class="mli-quality">{{ item['quality'] }}</span>
+                                {% endif %}
+                                <img data-src="https://{{ web_conf['imgcdn'] }}/p-max/200/{{ item['slug'] }}.jpg"
+                                     class="lazy thumb mli-thumb" alt="{{ item['title'] }}">
+                                <div class="mli-info">
+                                    <h2>{{ item['title'] }}</h2>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                    <div class="clearfix"></div>
+                </div>
+                {% if tp > 1 %}
+                    <div id="pagination">
+                        <nav>
+                            <ul class="pagination">
+                                {% if cp > 3 %}
+                                    <li>
+                                        <a href="{{ url_for('filter_list', skey=skey) }}" rel="start">&lt;&lt; First</a>
+                                    </li>
+                                {% endif %}
+                                {% if cp > 1 %}
+                                    <li class="prev">
+                                        <a href="{{ url_for('filter_list', page=pp, genre=genre, country=country, types=types, year=year)|replace('%2C', ',') }}" rel="prev">&larr; Previous</a>
+                                    </li>
+                                {% endif %}
+                                {% if cp > 2 %}
+                                    <li>
+                                        <a href="{{ url_for('filter_list', page=cp - 2, genre=genre, country=country, types=types, year=year)|replace('%2C', ',') }}">{{ cp - 2 }}</a>
+                                    </li>
+                                {% endif %}
+                                {% if cp > 1 and cp != 2 %}
+                                    <li>
+                                        <a href="{{ url_for('filter_list', page=cp - 1, genre=genre, country=country, types=types, year=year)|replace('%2C', ',') }}">{{ cp - 1 }}</a>
+                                    </li>
+                                {% elif cp == 2 %}
+                                    <li>
+                                        <a href="{{ url_for('filter_list', genre=genre, country=country, types=types, year=year)|replace('%2C', ',') }}">{{ cp - 1 }}</a>
+                                    </li>
+                                {% endif %}
+                                    <li class="active"><a href="#">{{ cp }}</a></li>
+                                {% if cp < tp %}
+                                    <li>
+                                        <a href="{{ url_for('filter_list', page=cp + 1, genre=genre, country=country, types=types, year=year)|replace('%2C', ',') }}">{{ cp + 1 }}</a>
+                                    </li>
+                                {% endif %}
+                                {% if cp < (tp - 1) %}
+                                    <li>
+                                        <a href="{{ url_for('filter_list', page=cp + 2, genre=genre, country=country, types=types, year=year)|replace('%2C', ',') }}">{{ cp + 2 }}</a>
+                                    </li>
+                                {% endif %}
+                                {% if cp < tp %}
+                                    <li class="next">
+                                        <a href="{{ url_for('filter_list', page=np, genre=genre, country=country, types=types, year=year)|replace('%2C', ',') }}" rel="next">Next &rarr;</a>
+                                    </li>
+                                {% endif %}
+                                {% if cp < (tp - 2) %}
+                                    <li>
+                                        <a href="{{ url_for('filter_list', page=tp, genre=genre, country=country, types=types, year=year)|replace('%2C', ',') }}">Last &gt;&gt;</a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block jslink %}
+    {% assets filters="jsmin", output="js/app-filter.js", "js/jquery.min.js", "js/bootstrap.min.js", "js/scroll.js", "js/lazyload.js", "js/cookie.js", "js/qtip.js", "js/main.js" %}
+     <script src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+{% endblock %}

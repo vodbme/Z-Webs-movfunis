@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+
+{%- block seo %}
+    <title>Watch Movies Online Free - 123movies.org</title>
+    <meta name="description" content="Watch HD Movies Online For Free and Download the latest movies without Registration at 123movies"/>
+    <meta name="original-source" content="{{ web_conf.url }}{{ url_for('page_home') }}"/>
+    <link rel="canonical" href="{{ web_conf.url }}{{ url_for('page_home') }}"/>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Watch Movies Online Free - 123movies.org"/>
+    <meta property="og:description" content="Watch HD Movies Online For Free and Download the latest movies without Registration at 123movies"/>
+    <meta property="og:url" content="{{ web_conf.url }}{{ url_for('page_home') }}"/>
+    <meta property="og:site_name" content="{{ web_conf.site_name }}"/>
+    <meta property="og:image" content="{{ web_conf.social.image }}"/>
+    <meta property="fb:admins" content="{{ web_conf.social.facebook.admin }}"/>
+    <meta property="fb:pages" content="{{ web_conf.social.facebook.pages }}"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:description" content="Watch HD Movies Online For Free and Download the latest movies without Registration at 123movies"/>
+    <meta name="twitter:title" content="Watch Movies Online Free - 123movies.org"/>
+    <meta name="twitter:site" content="{{ web_conf.site_name }}"/>
+    <meta name="twitter:image" content="{{ web_conf.social.image }}"/>
+    <meta name="twitter:creator" content="@{{ web_conf.social.twitter.name }}"/>
+{% endblock -%}
+
+{%- block css %}
+    {% assets filters="cssmin", output="css/app-home.css", "css/fonts.css", "css/bootstrap.min.css", "css/fa.min.css", "css/slide.css", "css/psbar.css", "css/qtip.css", "css/style.css", "css/custom.css" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}" type="text/css"/>
+    {% endassets %}
+{% endblock -%}
+
+{% block body %}
+<div id="main">
+    <div class="container">
+        <div class="top-content">
+            {% include 'includes/home-slide.html' %}
+            {% include 'includes/home-news.html' %}
+            <div class="clearfix"></div>
+        </div>
+        {% include 'includes/home-social.html' %}
+        <div class="main-content">
+            <div class="movies-list-wrap mlw-topview mt20">
+                <div class="ml-title">
+                 <span class="pull-left hidden-xs">Suggestion <i class="fa fa-chevron-right ml10"></i></span>
+                 <ul role="tablist" class="nav nav-tabs">
+                     <li class="active">
+                         <a data-toggle="tab" role="tab" href="#movie-featured" aria-expanded="false">Featured</a>
+                     </li>
+                     <li>
+                         <a onclick="ajaxContentBox('top-view')" data-toggle="tab" role="tab" href="#top-view" aria-expanded="false">Top Viewed</a>
+                     </li>
+                     <li>
+                         <a onclick="ajaxContentBox('top-favorite')" data-toggle="tab" role="tab" href="#top-favorite" aria-expanded="false">Most Favorite</a>
+                     </li>
+                     <li>
+                         <a onclick="ajaxContentBox('top-rating')" data-toggle="tab" role="tab" href="#top-rating" aria-expanded="false">Top Rating</a>
+                     </li>
+                 </ul>
+                 <div class="clearfix"></div>
+                </div>
+                <div class="tab-content">
+                 <div id="movie-featured" class="movies-list movies-list-full tab-pane in fade active">
+                     {% for item in ftrd %}
+                     <div data-movie-id="{{ item['data_id'] }}" class="ml-item">
+                         <a href="{{ url_for('film_page', slug=item['slug']) }}" data-url="{{ url_for('film_info', mid=item['data_id']) }}" class="ml-mask jt" title="{{ item['title'] }}">
+                             {% if item['type'] == 'series' %}
+                                 <span class="mli-eps">Eps<i>{{ item['episode'] }}</i></span>
+                             {% elif item['type'] == 'movies' %}
+                                 <span class="mli-quality">{{ item['quality'] }}</span>
+                             {% endif %}
+                             <img data-src="https://{{ web_conf['imgcdn'] }}/p-max/200/{{ item['slug'] }}.jpg" class="lazy thumb mli-thumb" alt="{{ item['title'] }}">
+                             <div class="mli-info">
+                                 <h2>{{ item['title'] }}</h2>
+                             </div>
+                         </a>
+                     </div>
+                     {% endfor %}
+                     <div class="clearfix"></div>
+                 </div>
+                 <div id="top-view" class="movies-list movies-list-full tab-pane in fade">
+                     <div id="content-box"></div>
+                     <div class="clearfix"></div>
+                 </div>
+                 <div id="top-favorite" class="movies-list movies-list-full tab-pane in fade">
+                     <div id="content-box"></div>
+                     <div class="clearfix"></div>
+                 </div>
+                 <div id="top-rating" class="movies-list movies-list-full tab-pane in fade">
+                     <div id="content-box"></div>
+                     <div class="clearfix"></div>
+                 </div>
+                </div>
+            </div>
+            <div class="movies-list-wrap mlw-latestmovie">
+                <div class="ml-title">
+                    <span class="pull-left">Latest Movies <i class="fa fa-chevron-right ml10"></i></span>
+                    <a href="{{ web_conf.url }}{{ url_for('film_list', slug='movies') }}" class="pull-right cat-more">View more »</a>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="movies-list movies-list-full tab-pane in fade active">
+                    {% for item in l_m %}
+                        <div data-movie-id="{{ item['data_id'] }}" class="ml-item">
+                            <a href="{{ web_conf.url }}{{ url_for('film_page', slug=item['slug']) }}" data-url="{{ url_for('film_info', mid=item['data_id']) }}" class="ml-mask jt" title="{{ item['title'] }}">
+                                <span class="mli-quality">{{ item['quality'] }}</span>
+                                <img data-src="https://{{ web_conf['imgcdn'] }}/p-max/200/{{ item['slug'] }}.jpg" class="lazy thumb mli-thumb" alt="{{ item['title'] }}">
+                                <div class="mli-info">
+                                    <h2>{{ item['title'] }}</h2>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="movies-list-wrap mlw-featured">
+                <div class="ml-title">
+                    <span class="pull-left">Latest TV-Series <i class="fa fa-chevron-right ml10"></i></span>
+                    <a href="{{ web_conf.url }}{{ url_for('film_list', slug='series') }}" class="pull-right cat-more">View more »</a>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="movies-list movies-list-full">
+                    {% for item in l_s %}
+                        <div data-movie-id="{{ item['data_id'] }}" class="ml-item">
+                            <a href="{{ web_conf.url }}{{ url_for('film_page', slug=item['slug']) }}" data-url="{{ url_for('film_info', mid=item['data_id']) }}" class="ml-mask jt" title="{{ item['title'] }}">
+                                <span class="mli-eps">Eps<i>{{ item['episode'] }}</i></span>
+                                <img data-src="https://{{ web_conf['imgcdn'] }}/p-max/200/{{ item['slug'] }}.jpg" class="lazy thumb mli-thumb" alt="{{ item['title'] }}">
+                                <div class="mli-info">
+                                    <h2>{{ item['title'] }}</h2>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block jslink %}
+    {% assets filters="jsmin", output="js/app-home.js", "js/jquery.min.js", "js/bootstrap.min.js", "js/scroll.js", "js/lazyload.js", "js/slide.js", "js/psbar.js", "js/cookie.js", "js/qtip.js", "js/main.js" %}
+     <script src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+{% endblock %}

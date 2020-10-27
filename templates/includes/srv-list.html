@@ -1,0 +1,35 @@
+<div class="goblock-header">
+    <div class="gh-title">Server</div>
+    <div class="gh-tabs gh-servertabs">
+        <ul class="nav nav-tabs" role="tablist">
+            <li><a id="sv-1" data-id="1" class="server-item embed" href="#srv-1" role="tab" data-toggle="tab">Server 1</a></li>
+            <li><a id="sv-2" data-id="2" class="server-item embed" href="#srv-2" role="tab" data-toggle="tab">Server 2</a></li>
+            <li><a id="sv-3" data-id="3" class="server-item embed" href="#srv-3" role="tab" data-toggle="tab">Server 3</a></li>
+        </ul>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="goblock-content go-full">
+    <div class="tab-content">
+        <ul id="srv-1" class="ulclear tab-pane fade in server-list-item"> {% for item in items.data %}
+            <li class="ep-item" data-index="{{ item.ep_id }}" data-server="1" data-id="{{ item.ep_id }}" id="ep-{{ item.ep_id }}">
+                <div class="sli-name"><a href="javascript:void(0)" title="">{{ item.ep_title }}</a></div>
+                <div class="sli-btn"><a class="btn btn-sm btn-go2 btn-ep-item" href="javascript:void(0)" title=""><i class="icon-play mr5"></i>Watch now</a></div>
+                <div class="clearfix"></div>
+            </li> {% endfor %}</ul>
+        <ul id="srv-2" class="ulclear tab-pane fade in server-list-item"> {% for item in items.data %}
+            <li class="ep-item" data-index="{{ item.ep_id }}" data-server="2" data-id="{{ item.ep_id }}" id="ep-{{ item.ep_id }}">
+                <div class="sli-name"><a href="javascript:void(0)" title="">{{ item.ep_title }}</a></div>
+                <div class="sli-btn"><a class="btn btn-sm btn-go2 btn-ep-item" href="javascript:void(0)" title=""><i class="icon-play mr5"></i>Watch now</a></div>
+                <div class="clearfix"></div>
+            </li> {% endfor %}</ul>
+        <ul id="srv-3" class="ulclear tab-pane fade in server-list-item"> {% for item in items.data %}
+            <li class="ep-item" data-index="{{ item.ep_id }}" data-server="3" data-id="{{ item.ep_id }}" id="ep-{{ item.ep_id }}">
+                <div class="sli-name"><a href="javascript:void(0)" title="">{{ item.ep_title }}</a></div>
+                <div class="sli-btn"><a class="btn btn-sm btn-go2 btn-ep-item" href="javascript:void(0)" title=""><i class="icon-play mr5"></i>Watch now</a></div>
+                <div class="clearfix"></div>
+            </li> {% endfor %}</ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
+</div>

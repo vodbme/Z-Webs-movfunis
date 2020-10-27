@@ -1,0 +1,19 @@
+<ul style="margin-bottom: 0;">
+    {% set cnt = [0] %}{% for item in items[:5] %}
+    <li>
+        <a style="background-image: url(https://{{ web_conf['imgcdn'] }}/poster/{{ item['data_id'] }}/{{ item['slug'] }}-60.jpg)" class="thumb" href="{{ url_for('film_page', slug=item['slug']) }}"></a>
+        <div class="ss-info">
+            <a href="{{ url_for('film_page', slug=item['slug']) }}" class="ss-title">{{ item['title'] }}</a>
+            <p>{{ item['duration'] }} min</p>
+            {% for genres in item['genre'] %}
+                <a href="{{ url_for('genre_list', slug=genres['slug']) }}" title="{{ genres['name'] }}">{{ genres['name'] }}</a>
+            {{ ", " if not loop.last }}{% endfor %}
+        </div>
+        <div class="clearfix"></div>
+    </li>
+    {% if cnt.append(cnt.pop() + 1) %}{% endif %}{% endfor %}{% if cnt[0] == 5 %}
+    <li class="ss-bottom" style="padding: 0; border-bottom: none;">
+        <a class="more" href="{{ url_for('searching', skey=query) }}">View all</a>
+    </li>
+    {% endif %}
+</ul>

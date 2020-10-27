@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{%- block seo %}
+    <title>Profile | {{ web_conf.site_name }}</title>
+    <meta name="description" content="The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again."/>
+{% endblock -%}
+
+{%- block css %}
+    {% assets filters="cssmin", output="css/app-profile.css", "css/fonts.css", "css/bootstrap.min.css", "css/fa.min.css", "css/qtip.css", "css/style.css", "css/custom.css" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}" type="text/css"/>
+    {% endassets %}
+{% endblock -%}
+
+{% block body %}
+<div id="main" class="page-detail">
+    <div class="container">
+        <div class="pad"></div>
+        <div class="main-content main-detail">
+            <div id="bread">
+                <ol class="breadcrumb">
+                    <li><a href="{{ url_for('page_home') }}">Home</a></li>
+                    <li>User</li>
+                    <li class="active">Profile</li>
+                </ol>
+            </div>
+            <div class="profiles-wrap">
+                <div class="sidebar">
+                    <div class="sidebar-menu">
+                        <div class="sb-title"><i class="fa fa-navicon mr5"></i> Menu</div>
+                        <ul>
+                            <li class="active">
+                                <a href="{{ url_for('user_profile') }}">
+                                    <i class="fa fa-user mr5"></i> Profile
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('user_favorite') }}">
+                                    <i class="fa fa-heart mr5"></i> My movies
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-bell mr5"> </i> Notifications <span class="badge">0</span>
+                                </a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-mobile mr5"></i> Apps</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="pp-main">
+                    <div class="ppm-head">
+                        <div class="ppmh-title"><i class="fa fa-user mr5"></i> Profile</div>
+                    </div>
+                    <div class="ppm-content user-content">
+                        <div class="uct-avatar">
+                            <img class="avatar" src="/img/profile-avatar.jpg" title="{{ current_user.fname }}" alt="{{ current_user.fname }}">
+                        </div>
+                        <div class="uct-info">
+                            <div class="block">
+                                <label>Full name:</label> {{ current_user.fname }}
+                            </div>
+                            <div class="block">
+                                <label>Username:</label> {{ current_user.id }}
+                            </div>
+                            <div class="block">
+                                <label>Email:</label> {{ current_user.email }}
+                            </div>
+                            <div class="block">
+                                <label>Facebook:</label>
+                            </div>
+                            <div class="block">
+                                <label>Join date:</label> Dec 7, 2018 at 03:59 AM
+                            </div>
+                            <div class="block">
+                                <label>Last login:</label> Dec 7, 2018 at 10:33 AM
+                            </div>
+                            <div class="mt20">
+                                <a href="#" class="btn btn-successful">Edit account info</a>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block jslink %}
+    {% assets filters="jsmin", output="js/app-profile.js", "js/jquery.min.js", "js/bootstrap.min.js", "js/scroll.js", "js/lazyload.js", "js/cookie.js", "js/qtip.js", "js/main.js" %}
+     <script src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+{% endblock %}

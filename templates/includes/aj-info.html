@@ -1,0 +1,23 @@
+<div class="jtip-quality">{{ items.quality }}</div>
+<div class="jtip-top">
+    <div class="jt-info jt-imdb">IMDb: {{ items.imdb_star }}</div>
+    <div class="jt-info">{{ items.year }}</div>
+    <div class="jt-info">{{ items.duration }} min</div>
+    <div class="clearfix"></div>
+</div>
+<p class="f-desc">{{ items.desc|truncate(140, True) }}</p>
+<div class="block">Country:
+    {% for country in items['country'] %}
+    <a href="{{ url_for('country_list', slug=country['slug']) }}" title="{{ country.name }}">{{ country.name }}</a>{{ ", " if not loop.last }}
+    {% endfor %}
+</div>
+<div class="block">Genre:
+    {% for genre in items['genre'] %}
+    <a href="{{ url_for('genre_list', slug=genre['slug']) }}" title="{{ genre.name }}">{{ genre.name }}</a>{{ ", " if not loop.last }}
+    {% endfor %}
+</div>
+<div class="jtip-bottom">
+    <a href="{{ url_for('film_watch', slug=items['slug']) }}" class="btn btn-block btn-successful">
+        <i class="fa fa-play-circle mr10"></i>Watch movie
+    </a>
+</div>

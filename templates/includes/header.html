@@ -1,0 +1,101 @@
+<header>
+    <div class="container">
+        <div class="header-logo">
+            <a title="Watch Your Favorite Movies Online" href="{{ web_conf.url }}" id="logo"></a>
+        </div>
+        <div class="mobile-menu"><i class="fa fa-reorder"></i></div>
+        <div class="mobile-search"><i class="fa fa-search"></i></div>
+        <div id="menu">
+            <ul class="top-menu">
+                <li class="">
+                    <a href="{{ web_conf.url }}{{ url_for('page_home') }}" title="Home">HOME</a>
+                </li>
+                <li class="">
+                    <a href="#" title="Genre">GENRE</a>
+                    <div class="sub-container" style="display: none">
+                        <ul class="sub-menu">
+                            {% if all_genre %}
+                            {% for genres in all_genre.genre %}
+                            <li><a href="{{ web_conf.url }}{{ url_for('genre_list', slug=genres['slug']) }}" title="{{ genres['name'] }}">{{ genres['name'] }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                </li>
+                <li class="">
+                    <a href="#" title="Country">COUNTRY</a>
+                    <div class="sub-container" style="display: none">
+                        <ul class="sub-menu">
+                            {% if all_country %}
+                            {% for country in all_country.country %}
+                            <li><a href="{{ web_conf.url }}{{ url_for('country_list', slug=country['slug']) }}" title="{{ country['name'] }}">{{ country['name'] }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                </li>
+                <li><a href="{{ web_conf.url }}{{ url_for('film_list', slug='series') }}" title="TV - Series">TV-SERIES</a></li>
+                <li><a href="{{ web_conf.url }}{{ url_for('film_list', slug='movies') }}" title="Movies">MOVIES</a></li>
+                <li><a href="{{ web_conf.url }}{{ url_for('top_imdb') }}" title="Top IMDb">TOP IMDb</a></li>
+                <li><a href="{{ web_conf.url }}{{ url_for('az_list') }}" title="A-Z List">A - Z LIST</a></li>
+                <li><a href="{{ web_conf.url }}{{ url_for('articles') }}" title="News">NEWS</a></li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div id="top-user">
+            {% if current_user.is_authenticated %}
+            <div class="top-user-content logged">
+                <div class="logged-feed">
+                    <a onclick="get_notify()" href="javascript:void(0)" class="btn btn-logged btn-feed"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bell-o"></i>
+                    </a>
+                    <ul class="dropdown-menu" id="list-notify">
+                        <li class="more"><a href="#" title="">You have no notification.</a></li>
+                    </ul>
+                </div>
+                <div class="logged-user">
+                    <a href="#" class="avatar user-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="/img/top-avatar.jpg" alt="{{ current_user.fname }}">
+                        <i class="fa fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="{{ url_for('user_profile') }}">
+                                <i class="fa fa-user mr5"></i> Profile
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('user_favorite') }}">
+                                <i class="fa fa-heart  mr5"></i> My movies
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('logout') }}">
+                                <i class="fa fa-power-off mr5"></i> Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            {% else %}
+            <div class="top-user-content guest">
+                <a href="#" class="btn btn-successful btn-login" title="Login" data-target="#pop-login" data-toggle="modal">LOGIN</a>
+            </div>
+            {% endif %}
+        </div>
+        <div id="search">
+            <div class="search-content">
+                <input maxlength="100" autocomplete="off" name="keyword" type="text" class="form-control search-input" placeholder="Searching..."/>
+                <div id="token-search"></div>
+                <a onclick="searchMovie()" class="search-submit" href="javascript:void(0)" title="Search">
+                    <i class="fa fa-search"></i>
+                </a>
+                <div class="search-suggest" id="search-suggest-menu" style="display: none;"></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</header>
+<div class="header-pad"></div>

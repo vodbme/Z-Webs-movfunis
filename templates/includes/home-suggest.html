@@ -1,0 +1,13 @@
+<div data-movie-id="{{ item['data_id'] }}" class="ml-item">
+    <a href="{{ url_for('film_page', slug=item['slug']) }}" data-url="{{ url_for('film_info', mid=item['data_id']) }}" class="ml-mask jt" title="{{ item['title'] }}">
+        {% if item['type'] == 'series' %}
+            <span class="mli-eps">Eps<i>{{ item['episode'] }}</i></span>
+        {% elif item['type'] == 'movies' %}
+            <span class="mli-quality">{{ item['quality'] }}</span>
+        {% endif %}
+        <img src="https://{{ web_conf['imgcdn'] }}/p-max/200/{{ item['slug'] }}.jpg" class="thumb mli-thumb" alt="{{ item['title'] }}">
+        <div class="mli-info">
+            <h2>{{ item['title'] }}</h2>
+        </div>
+    </a>
+</div>

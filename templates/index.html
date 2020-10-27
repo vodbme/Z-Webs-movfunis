@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{%- block seo %}
+    <title>Watch Movies Online Free - 123movies.org</title>
+    <meta name="description" content="Watch HD Movies Online For Free and Download the latest movies without Registration at 123movies"/>
+    <meta name="original-source" content="{{ web_conf.url }}{{ url_for('page_home') }}"/>
+    <link rel="canonical" href="{{ web_conf.url }}{{ url_for('page_home') }}"/>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Watch Movies Online Free - 123movies.org"/>
+    <meta property="og:description" content="Watch HD Movies Online For Free and Download the latest movies without Registration at 123movies"/>
+    <meta property="og:url" content="{{ web_conf.url }}{{ url_for('page_home') }}"/>
+    <meta property="og:site_name" content="{{ web_conf.site_name }}"/>
+    <meta property="og:image" content="{{ web_conf.social.image }}"/>
+    <meta property="fb:admins" content="{{ web_conf.social.facebook.admin }}"/>
+    <meta property="fb:pages" content="{{ web_conf.social.facebook.pages }}"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:description" content="Watch HD Movies Online For Free and Download the latest movies without Registration at 123movies"/>
+    <meta name="twitter:title" content="Watch Movies Online Free - 123movies.org"/>
+    <meta name="twitter:site" content="{{ web_conf.site_name }}"/>
+    <meta name="twitter:image" content="{{ web_conf.social.image }}"/>
+    <meta name="twitter:creator" content="@{{ web_conf.social.twitter.name }}"/>
+{% endblock -%}
+
+{%- block css %}
+    {% assets filters="cssmin", output="css/app-index.css", "css/fonts.css", "css/bootstrap.min.css", "css/fa.min.css", "css/qtip.css", "css/style.css", "css/custom.css" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}" type="text/css"/>
+    {% endassets %}
+    <style>
+    body {
+        background-image: url(/img/index-123movies.jpg);
+        background-size: cover;
+        background-position: 50% 25%;
+    }
+    </style>
+{% endblock -%}
+
+{% block body %}
+<div id="main">
+    <div class="container">
+        <div class="home-main">
+            <div class="hm-logo"><a href="{{ web_conf.url }}" title="Watch Your Favorite Movies Online"></a>
+            </div>
+            <div class="addthis_inline_share_toolbox mb10"></div>
+            <div id="hm-search">
+                <div class="search-content">
+                    <input maxlength="100" autocomplete="off" name="keyword-home" class="form-control search-input" placeholder="Enter Movies or Series name" type="text">
+                    <div id="token-search-home"></div>
+                    <a onclick="searchMovieHome()" class="search-submit" href="javascript:void(0)" title="Search"><i class="fa fa-search"></i></a>
+                    <div class="search-suggest" id="search-suggest-home" style="display: none;"></div>
+                </div>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <a href="https://twitter.com/123moviesfun?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @123moviesfun</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2F123moviesfun%2F&amp;width=134&amp;layout=button_count&amp;action=like&amp;size=large&amp;show_faces=false&amp;share=true&amp;height=46&amp;appId=172103306764562" width="180" height="28" style="border:none;overflow:hidden;margin-left:10px" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+            </div>
+            <div class="hm-button"><a href="{{ web_conf.url }}{{ url_for('page_home') }}" class="btn btn-lg btn-successful">Use the old 123Movies? Click here</a></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block jslink %}
+    {% assets filters="jsmin", output="js/app-index.js", "js/jquery.min.js", "js/bootstrap.min.js", "js/scroll.js", "js/lazyload.js", "js/cookie.js", "js/qtip.js", "js/main.js" %}
+     <script src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+{% endblock %}

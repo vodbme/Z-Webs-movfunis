@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+{%- block seo %}
+    <title>123Movies.org Blog and Latest Movie News</title>
+    <meta name="description" content="Read about latest and upcoming releases of movies and tv shows on 123movies."/>
+    <meta name="original-source" content="{{ web_conf.url }}{{ url_for('articles', page=cp) }}"/>
+    <link rel="canonical" href="{{ web_conf.url }}{{ url_for('articles', page=cp) }}"/>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="123Movies.org Blog and Latest Movie News"/>
+    <meta property="og:description" content="Read about latest and upcoming releases of movies and tv shows on 123movies."/>
+    <meta property="og:url" content="{{ web_conf.url }}{{ url_for('articles', page=cp) }}"/>
+    <meta property="og:site_name" content="{{ web_conf.site_name }}"/>
+    <meta property="og:image" content="{{ web_conf.social.image }}"/>
+    <meta property="fb:admins" content="{{ web_conf.social.facebook.admin }}"/>
+    <meta property="fb:pages" content="{{ web_conf.social.facebook.pages }}"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:description" content="Read about latest and upcoming releases of movies and tv shows on 123movies."/>
+    <meta name="twitter:title" content="123Movies.org Blog and Latest Movie News"/>
+    <meta name="twitter:site" content="{{ web_conf.site_name }}"/>
+    <meta name="twitter:image" content="{{ web_conf.social.image }}"/>
+    <meta name="twitter:creator" content="@{{ web_conf.social.twitter.name }}"/>
+{% endblock -%}
+
+{%- block css %}
+    {% assets filters="cssmin", output="css/app-news.css", "css/fonts.css", "css/bootstrap.min.css", "css/fa.min.css", "css/qtip.css", "css/style.css", "css/custom.css" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}" type="text/css"/>
+    {% endassets %}
+{% endblock -%}
+
+{% block body %}
+<div id="main" class="page-news">
+    <div class="container">
+        <div class="pad"></div>
+        <div class="main-content main-news">
+            <div id="bread">
+                <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li class="active">News</li>
+                </ol>
+            </div>
+            <div class="news-block">
+                <div class="box news-content news-list">
+                    <div class="box-head news-list-head">
+                        <div class="nlh">LATEST NEWS</div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="news-list-body">
+                        {% for item in items %}
+                        <div class="news-list-item ">
+                            <a href="/articles/view/{{ item['slug'] }}/" class="thumb">
+                                <img src="https://{{ web_conf['imgcdn'] }}/article-cover/{{ item['data_id'] }}/{{ item['slug'] }}-300.jpg" title="{{ item['title'] }}" alt="{{ item['title'] }}">
+                            </a>
+                            <div class="info">
+                                <h2>
+                                    <a href="/articles/view/{{ item['slug'] }}/" title="">{{ item['title'] }}</a>
+                                </h2>
+                                <p class="desc">{{ item['short'] }}</p>
+                                <p class="time">
+                                    <i class="fa fa-clock-o mr5"></i>{{ item['post_date'] }}
+                                    <span class="ml10"><i class="fa fa-eye mr5"></i>{{ item['view'] }}</span>
+                                </p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        {% endfor %}
+                        {% if tp > 1 %}
+                            <div id="pagination" style="margin: 0;">
+                                <nav>
+                                    <ul class="pagination">
+                                        {% if cp > 3 %}
+                                            <li><a href="{{ url_for('articles') }}" data-ci-pagination-page="1"
+                                                   rel="start">&lt;&lt; First</a></li>
+                                        {% endif %}
+                                        {% if cp > 1 %}
+                                            <li class="prev"><a href="{{ url_for('articles') }}{{ pp }}"
+                                                                data-ci-pagination-page="{{ pp }}" rel="prev">&larr;
+                                                Previous</a></li>
+                                        {% endif %}
+                                        {% if cp > 2 %}
+                                            <li><a href="{{ url_for('articles') }}{{ cp - 2 }}"
+                                                   data-ci-pagination-page="{{ cp - 2 }}">{{ cp - 2 }}</a></li>
+                                        {% endif %}
+                                        {% if cp > 1 and cp != 2 %}
+                                            <li><a href="{{ url_for('articles') }}{{ cp - 1 }}"
+                                                   data-ci-pagination-page="{{ cp - 1 }}">{{ cp - 1 }}</a></li>
+                                        {% elif cp == 2 %}
+                                            <li><a href="{{ url_for('articles') }}"
+                                                   data-ci-pagination-page="{{ cp - 1 }}">{{ cp - 1 }}</a></li>
+                                        {% endif %}
+                                        <li class="active"><a href="#">{{ cp }}</a></li>
+                                        {% if cp < tp %}
+                                            <li><a href="{{ url_for('articles') }}{{ cp + 1 }}"
+                                                   data-ci-pagination-page="{{ cp + 1 }}">{{ cp + 1 }}</a></li>
+                                        {% endif %}
+                                        {% if cp < (tp - 1) %}
+                                            <li><a href="{{ url_for('articles') }}{{ cp + 2 }}"
+                                                   data-ci-pagination-page="{{ cp + 2 }}">{{ cp + 2 }}</a></li>
+                                        {% endif %}
+                                        {% if cp < tp %}
+                                            <li class="next"><a href="{{ url_for('articles') }}{{ np }}"
+                                                                data-ci-pagination-page="{{ np }}" rel="next">Next
+                                                &rarr;</a></li>
+                                        {% endif %}
+                                        {% if cp < (tp - 2) %}
+                                            <li><a href="{{ url_for('articles') }}{{ tp }}"
+                                                   data-ci-pagination-page="{{ tp }}">Last &gt;&gt;</a></li>
+                                        {% endif %}
+                                    </ul>
+                                </nav>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="news-sidebar">
+                    <div class="box hot-news">
+                        <div class="box-head">
+                            <div class="nlh">HOT ARTICLES</div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="ns-list">
+                            {% for hot in hot_ar %}
+                            <div class="news-list-item">
+                                <div class="info">
+                                    <h2>
+                                        <a href="/articles/view/{{ hot['slug'] }}" title="">{{ hot['title'] }}</a>
+                                    </h2>
+                                    <div class="time">
+                                        <p class="label label-default label-sm mr10">News</p>
+                                        <i class="fa fa-clock-o mr5"></i>Posted {{ hot['post_date'] }}
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block jslink %}
+    {% assets filters="jsmin", output="js/app-news.js", "js/jquery.min.js", "js/bootstrap.min.js", "js/scroll.js", "js/lazyload.js", "js/cookie.js", "js/qtip.js", "js/main.js" %}
+     <script src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+{% endblock %}

@@ -1,0 +1,127 @@
+<div class="modal fade modal-cuz" id="pop-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i
+                        class="fa fa-close"></i>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">MEMBER LOGIN AREA</h4>
+            </div>
+            <div class="modal-body">
+                <p class="desc">Watch HD Movies Online For Free and Download the latest movies. For everybody,
+                    everywhere, everydevice, and everything ;)</p>
+                <form id="login-form" method="POST" action="{{ url_for('login') }}">
+                    <div class="block">
+                        <input required type="text" class="form-control" name="username" placeholder="Username">
+                    </div>
+                    <div class="block mt10">
+                        <input required type="password" class="form-control" name="password" placeholder="Password">
+                    </div>
+                    <div id="login-error" class="alert alert-danger text-center hidden"></div>
+                    <div class="block mt10 small">
+                        <label>
+                            <input type="checkbox" style="vertical-align: sub; margin-right: 3px;"> Remember me
+                        </label>
+                        <div class="pull-right">
+                            <a id="open-forgot" data-dismiss="modal" data-target="#pop-forgot" data-toggle="modal"
+                               title="Forgot password?">Forgot password?</a>
+                        </div>
+                    </div>
+                    <div id="login-loading" class="cssload-center hidden">
+                        <div class="cssload"><span></span></div>
+                    </div>
+                    <button id="login-submit" type="submit" class="btn btn-block btn-successful btn-approve mt10">
+                        Login
+                    </button>
+                </form>
+            </div>
+            <div class="modal-footer text-center">
+                Not a member yet? <a id="open-register" data-dismiss="modal" data-target="#pop-register" data-toggle="modal" title="">Join now!</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade modal-cuz" id="pop-register" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i
+                        class="fa fa-close"></i>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">You are welcome</h4>
+            </div>
+            <div class="modal-body">
+                <p class="desc">When becoming members of the site, you could use the full range of functions and enjoy the most exciting films.</p>
+                <form id="register-form" method="POST" action="{{ url_for('register') }}">
+                    <div class="block">
+                        <input required type="text" class="form-control" name="full_name" id="full_name" placeholder="Full name">
+                    </div>
+                    <div class="block mt10">
+                        <input required type="text" class="form-control" name="username" id="username" placeholder="Username">
+                    </div>
+                    <div class="block mt10">
+                        <input required type="email" class="form-control" name="email" id="email" placeholder="Email">
+                    </div>
+                    <div class="block mt10">
+                        <input required type="password" class="form-control" name="password" id="password" placeholder="Password">
+                    </div>
+                    <div class="block mt10">
+                        <input required type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="Confirm Password">
+                    </div>
+                    <div class="block mt10">
+                        <div class="block mb5 text-center">
+                            <div id="recaptcha-register"></div>
+                        </div>
+                    </div>
+                    <div id="register-error" class="alert alert-danger text-center hidden"></div>
+                    <div id="register-loading" class="cssload-center hidden">
+                        <div class="cssload"><span></span></div>
+                    </div>
+                    <button id="register-submit" type="submit" class="btn btn-block btn-successful btn-approve mt20">
+                        Register
+                    </button>
+                </form>
+            </div>
+            <div class="modal-footer text-center">
+                <a id="open-register" style="color: #888" data-dismiss="modal" data-target="#pop-login"
+                   data-toggle="modal" title=""><i class="fa fa-chevron-left mr10"></i> Back to login</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade modal-cuz" id="pop-forgot" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i
+                        class="fa fa-close"></i>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Forgot Password</h4>
+            </div>
+            <div class="modal-body">
+                <p class="desc">We will send a new password to your email. Please fill your email to form below.
+                </p>
+
+                <form id="forgot-form" method="POST" action="{{ url_for('login') }}">
+                    <div class="block mt10">
+                        <input type="email" class="form-control" name="email" placeholder="Your email" required>
+                    </div>
+                    <div id="forgot-error" class="alert alert-danger text-center hidden"></div>
+                    <div id="forgot-loading" class="cssload-center hidden">
+                        <div class="cssload"><span></span></div>
+                    </div>
+                    <button id="forgot-submit" type="submit" class="btn btn-block btn-successful btn-approve mt20">
+                        Submit
+                    </button>
+                </form>
+            </div>
+            <div class="modal-footer text-center">
+                <a id="open-register" style="color: #888" data-dismiss="modal" data-target="#pop-login"
+                   data-toggle="modal" title=""><i class="fa fa-chevron-left mr10"></i> Back to login</a>
+            </div>
+        </div>
+    </div>
+</div>

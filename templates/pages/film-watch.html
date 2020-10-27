@@ -1,0 +1,265 @@
+{% extends "base.html" %}
+
+{%- block seo %}
+    <title>Watch {{ items['title'] }} online free in HD - 123movies.org</title>
+    <meta name="description" content="Watch {{ items['title'] }} online without registration in HD on 123movies for free."/>
+    <meta name="original-source" content="{{ web_conf.url }}{{ url_for('film_watch', slug=slug) }}"/>
+    <link rel="canonical" href="{{ web_conf.url }}{{ url_for('film_watch', slug=slug) }}"/>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Watch {{ items['title'] }} online free in HD - 123movies.org"/>
+    <meta property="og:description" content="Watch {{ items['title'] }} online without registration in HD on 123movies for free."/>
+    <meta property="og:url" content="{{ web_conf.url }}{{ url_for('film_watch', slug=slug) }}"/>
+    <meta property="og:site_name" content="{{ web_conf.site_name }}"/>
+    <meta property="og:image" content="{{ web_conf.social.image }}"/>
+    <meta property="fb:admins" content="{{ web_conf.social.facebook.admin }}"/>
+    <meta property="fb:pages" content="{{ web_conf.social.facebook.pages }}"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:description" content="Watch {{ items['title'] }} online without registration in HD on 123movies for free."/>
+    <meta name="twitter:title" content="Watch {{ items['title'] }} online free in HD - 123movies.org"/>
+    <meta name="twitter:site" content="{{ web_conf.site_name }}"/>
+    <meta name="twitter:image" content="{{ web_conf.social.image }}"/>
+    <meta name="twitter:creator" content="@{{ web_conf.social.twitter.name }}"/>
+{% endblock -%}
+
+{%- block css %}
+    {% assets filters="cssmin", output="css/app-film-watch.css", "css/fonts.css", "css/bootstrap.min.css", "css/fa.min.css", "css/star-rating.css", "css/qtip.css", "css/style.css", "css/custom.css", "css/toastr.css" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}" type="text/css"/>
+    {% endassets %}
+{% endblock -%}
+
+{% block body %}
+<div id="main" class="page-detail" data-mid="{{ items['data_id'] }}" data-fsv="{{ fsv }}">
+    <div class="container">
+        <div class="pad"></div>
+        <div class="main-content main-detail">
+            <div class="main-content main-category">
+                <div id="bread">
+                    <ol class="breadcrumb">
+                        <li><a href="{{ url_for('page_home') }}">Home</a></li>
+                        <li><a href="{{ url_for('film_list', slug=items['type']) }}">{{ items['type']|title }}</a></li>
+                        <li class="active">{{ items['title'] }}</li>
+                    </ol>
+                </div>
+                <div id="mv-info">
+                    <div id="content-embed" class="cssload-center cssload-2x">
+                        <div class="cssload"><span></span></div>
+                        <iframe id="iframe-embed" width="100%" height="500" scrolling="no" frameborder="0" src="" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+                    </div>
+                    <div id="bar-player">
+                        <a href="#mv-info" class="btn bp-btn-light"><i class="fa fa-lightbulb-o"></i> <span></span></a>
+                        <a id="favorite" data-movie="{{ items['data_id'] }}" data-act="added" class="btn bp-btn-like"
+                           href="javascript:void(0)" title="Add to favorite">
+                            <i class="fa fa-heart"></i> Favorite
+                        </a>
+                        <a href="#commentfb" class="btn bp-btn-review"><i class="fa fa-comments"></i>
+                            <span>Comment (<span id="comment-count">0</span>)</span>
+                        </a>
+                        <a class="btn bp-btn-report" data-target="#pop-report" data-toggle="modal" style="color: #fff000; float: right">
+                            <i class="fa fa-warning"></i> Report
+                        </a>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="alert alert-warning mb0">
+                        <i class="fa fa-warning mr5"></i> <strong>If video not working, wrong, missing subtitle or new episode available, please use report button.</strong>
+                        <!--<i class="fa fa-warning mr5"></i> <strong>We still in progress fixing server 1, Please use server 2 or 3.</strong>-->
+                    </div>
+                    <div id="list-eps">
+                        <div id="sv-1" class="le-server server-active">
+                            <div class="les-title">
+                                <i class="fa fa-server mr5"></i>
+                                <strong>Server 1 </strong>
+                            </div>
+                            <div class="les-content">
+                            {% for ep in vids['data'] %}
+                               {% if items['type'] == 'series' %}
+                               <a href="javascript:void(0)" class="btn-eps first-ep last-ep" data-index="{{ loop.index0 }}" data-server="1" data-id="{{ ep['ep_id'] }}" id="ep-{{ ep['ep_id'] }}" data-toggle="tooltip" title="{{ ep['ep_title'] }}">{{ '{0:02d}'.format(ep['ep_id']) }}</a>
+                               {% else %}
+                               <a href="javascript:void(0)" class="btn-eps first-ep last-ep" data-index="{{ loop.index0 }}" data-server="1" data-id="{{ ep['ep_id'] }}" id="ep-{{ ep['ep_id'] }}">{{ ep['ep_title'] }}</a>
+                               {% endif %}
+                            {% endfor %}
+                            </div>
+                        </div>
+                        <div id="sv-2" class="le-server server-active">
+                            <div class="les-title">
+                                <i class="fa fa-server mr5"></i>
+                                <strong>Server 2 </strong>
+                            </div>
+                            <div class="les-content">
+                            {% for ep in vids['data'] %}
+                               {% if items['type'] == 'series' %}
+                               <a href="javascript:void(0)" class="btn-eps first-ep last-ep" data-index="{{ loop.index0 }}" data-server="2" data-id="{{ ep['ep_id'] }}" id="ep-{{ ep['ep_id'] }}" data-toggle="tooltip" title="{{ ep['ep_title'] }}">{{ '{0:02d}'.format(ep['ep_id']) }}</a>
+                               {% else %}
+                               <a href="javascript:void(0)" class="btn-eps first-ep last-ep" data-index="{{ loop.index0 }}" data-server="2" data-id="{{ ep['ep_id'] }}" id="ep-{{ ep['ep_id'] }}">{{ ep['ep_title'] }}</a>
+                               {% endif %}
+                            {% endfor %}
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div id="sv-3" class="le-server server-active">
+                            <div class="les-title">
+                                <i class="fa fa-server mr5"></i>
+                                <strong>Server 3</strong>
+                            </div>
+                            <div class="les-content">
+                            {% for ep in vids['data'] %}
+                               {% if items['type'] == 'series' %}
+                               <a href="javascript:void(0)" class="btn-eps first-ep last-ep" data-index="{{ loop.index0 }}" data-server="3" data-id="{{ ep['ep_id'] }}" id="ep-{{ ep['ep_id'] }}" data-toggle="tooltip" title="{{ ep['ep_title'] }}">{{ '{0:02d}'.format(ep['ep_id']) }}</a>
+                               {% else %}
+                               <a href="javascript:void(0)" class="btn-eps first-ep last-ep" data-index="{{ loop.index0 }}" data-server="3" data-id="{{ ep['ep_id'] }}" id="ep-{{ ep['ep_id'] }}">{{ ep['ep_title'] }}</a>
+                               {% endif %}
+                            {% endfor %}
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="mvi-content">
+                        <div class="mvic-btn">
+                            <div class="mv-rating">
+                                <div id="movie-mark" class="btn btn-danger">{% if items['ratings'] %}{{ items['ratings'] / items['votes'] / 2 }}{% else %}0.0{% endif %}</div>
+                                <label id="movie-rating" for="rating">Rating ({% if items['votes'] %}{{ "{:,}".format(items['votes']) }}{% else %}0{% endif %})</label>
+                                <div class="star-rating rating-sm rating-active">
+                                    <input id="rating" name="rating" class="rating form-control hide" value="{% if items['ratings'] %}{{ items['ratings'] / items['votes'] / 2 }}{% endif %}" movie-id="{{ items['data_id'] }}" data-show-clear="false" data-show-caption="true" min="0" max="5" step="0.5" data-size="sm" data-symbol="" data-glyphicon="false" data-rating-class="rating-fa" data-show-clear="false">
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            {%- include 'includes/ads-btnr.html' -%}
+                        </div>
+                        <div class="thumb mvic-thumb" style="background-image: url(https://{{ web_conf.imgcdn }}/poster/{{ items['data_id'] }}/{{ items['slug'] }}-200.jpg);"></div>
+                        <div class="mvic-desc">
+                            <h3>{{ items['title'] }}</h3>
+                            <div class="block-trailer">
+                                <a data-target="#pop-trailer" data-toggle="modal" class="btn btn-successful" onclick="trailer_watch('{% if items["trailer"] %}{{ items["trailer"] }}{% endif %}')">
+                                    <i class="fa fa-video-camera mr5"></i>Trailer
+                                </a>
+                            </div>
+                            <div class="desc">{{ items['desc'] }}</div>
+                            <div class="mvic-info">
+                                <div class="mvici-left">
+                                    <p>
+                                        <strong>Genre: </strong>
+                                        {% if items['genre'] %}
+                                        {% for genre in items['genre'] %}
+                                            <a href="{{ url_for('genre_list', slug=genre['slug']) }}" title="{{ genre.name }}">{{ genre.name }}</a>{{ ", " if not loop.last }}{% endfor %}
+                                        {% else %}-{% endif %}
+                                    </p>
+                                    <p>
+                                        <strong>Actor: </strong>
+                                        {% if items['actors'] %}
+                                        {% for actor in items['actors'][:3] %}
+                                            <a href="{{ url_for('actor_list', slug=actor['slug']) }}" title="{{ actor.name }}">{{ actor.name }}</a>{{ ", " if not loop.last }}{% endfor %}
+                                        {% else %}-{% endif %}
+                                    </p>
+                                    <p>
+                                        <strong>Director: </strong>
+                                        {% if items['director'] %}
+                                        {% for director in items['director'] %}
+                                            <a href="{{ url_for('director_list', slug=director['slug']) }}" title="{{ director.name }}">{{ director.name }}</a>{{ ", " if not loop.last }}{% endfor %}
+                                        {% else %}-{% endif %}
+                                    </p>
+                                    <p>
+                                        <strong>Country: </strong>
+                                        {% if items['country'] %}
+                                        {% for country in items['country'] %}
+                                            <a href="{{ url_for('country_list', slug=country['slug']) }}" title="{{ country.name }}">{{ country.name }}</a>{{ ", " if not loop.last }}{% endfor %}
+                                        {% else %}-{% endif %}
+                                    </p>
+                                </div>
+                                <div class="mvici-right">
+                                    <p>
+                                        <strong>Duration:</strong> {{ items['duration'] }} min
+                                    </p>
+                                    <p>
+                                        <strong>Quality:</strong> <span class="quality">{{ items['quality'] }}</span>
+                                    </p>
+                                    <p>
+                                        <strong>Release:</strong> {% if items['year'] %}<a href="{{ url_for('release_list', slug=items['year']) }}">{{ items['year'] }}</a>{% else %}-{% endif %}
+                                    </p>
+                                    <p>
+                                        <strong>IMDb:</strong> {{ items['imdb_star'] }}
+                                    </p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div id="mv-keywords">
+                    <strong class="mr10">Keywords:</strong>
+                    {% for tags in items['keyword'] %}
+                    <a href="{{ url_for('tags_list', slug=tags.slug) }}" title="{{ tags.name }}">
+                        <h5>{{ tags.name }}</h5>
+                    </a>
+                    {% endfor %}
+                </div>
+                <div id="commentfb">
+                    <div class="text-center">
+                        <button id="show-comments" class="btn btn-successful" onclick="disqus();return false;">Load Comments</button>
+                    </div>
+                    <div id="disqus_thread"></div>
+                </div>
+            </div>
+            <div class="movies-list-wrap mlw-related">
+                <div class="ml-title ml-title-page">
+                    <span>You May Also Like</span>
+                </div>
+                <div class="movies-list movies-list-full">
+                    {% for item in related %}
+                    <div data-movie-id="{{item['data_id']}}" class="ml-item">
+                        <a href="{{ url_for('film_page', slug=item['slug']) }}" data-url="{{ url_for('film_info', mid=item['data_id']) }}" class="ml-mask jt" title="{{item['title']}}">
+                            {% if item['type'] == 'series' %}
+                                <span class="mli-eps">Eps<i>{{ item['episode'] }}</i></span>
+                            {% elif item['type'] == 'movies' %}
+                                <span class="mli-quality">{{ item['quality'] }}</span>
+                            {% endif %}
+                            <img data-src="https://{{ web_conf['imgcdn'] }}/p-max/200/{{ item['slug'] }}.jpg" class="lazy thumb mli-thumb" alt="{{item['title']}}">
+                            <div class="mli-info">
+                                <h2>{{item['title']}}</h2>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{%- include 'includes/pop-trailer.html' -%}
+{%- include 'includes/pop-report.html' -%}
+<div id="overlay"></div>
+{% endblock %}
+
+{% block jslink %}
+    {% assets filters="jsmin", output="js/app-film-watch.js", "js/jquery.min.js", "js/bootstrap.min.js", "js/star-rating.js", "js/scroll.js", "js/lazyload.js", "js/cookie.js", "js/qtip.js", "js/toastr.js", "js/main.js", "js/player.js" %}
+     <script src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+    <script>
+        var disqus_loaded = false;
+        var disqus_shortname = '123moviesfun';
+        function disqus() {
+            if (!disqus_loaded)  {
+                var disqus_config = function () {
+                    this.page.url = "{{ web_conf.url }}{{ url_for('film_watch', slug=slug) }}";
+                    this.page.identifier = "{{ items['data_id'] }}";
+                };
+                disqus_loaded = true;
+                var d = document, s = d.createElement('script');
+                s.async = true;
+                s.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                document.getElementById("show-comments").style.display = "none";
+            }
+        }
+        //Opens comments when linked to directly
+        var hash = window.location.hash.substr(1);
+        if (hash.length > 8) {
+            if (hash.substring(0, 8) == "comment-") {
+                disqus();
+            }
+        }
+    </script>
+{% endblock %}

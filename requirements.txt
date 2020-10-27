@@ -1,0 +1,17 @@
+pytz
+flask
+gunicorn
+gevent
+pymongo
+cryptography
+jsmin
+cssmin
+requests
+redis
+django-htmlmin
+flask-login
+woothee
+Flask-Assets
+Flask-Caching
+flask-limiter
+dnspython

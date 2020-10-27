@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/video-sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+    {% for item in items %}
+    <url>
+		<loc>{{ web_conf.url }}{{ url_for('film_watch', slug=slug) }}</loc>
+		<video:video>
+			<video:title>{{ item['title'] }} - {{ web_conf.domain }}</video:title>
+            <video:publication_date>{{ time }}</video:publication_date>
+			<video:description>{{ item['desc'] }}</video:description>
+			<video:player_loc allow_embed="yes">{{ item['trailer'] }}</video:player_loc>
+			<video:thumbnail_loc>https://{{ web_conf.imgcdn }}/cover/{{ item['data_id'] }}/{{ item['slug'] }}-600.jpg</video:thumbnail_loc>
+			<video:duration>{{ item['duration'] }}</video:duration>
+			<video:width>640</video:width>
+			<video:height>390</video:height>
+			<video:category>{{ item['type'] }}</video:category>
+			<video:family_friendly>yes</video:family_friendly>
+			<video:uploader info='{{ web_conf.url }}'>123movies</video:uploader>
+		</video:video>
+	</url>
+    {% endfor %}
+</urlset>

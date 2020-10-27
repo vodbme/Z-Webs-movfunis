@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{%- block seo %}
+    <title>Library Collection of All Movies on 123Movies.org</title>
+    <meta name="description" content="Library Collection of All free Movies on 123Movies.org. Watch any movie here online"/>
+    <meta name="original-source" content="{{ web_conf.url }}{{ url_for('az_list', libs=libs, page=cp) }}"/>
+    <link rel="canonical" href="{{ web_conf.url }}{{ url_for('az_list', libs=libs, page=cp) }}"/>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Library Collection of All Movies on 123Movies.org"/>
+    <meta property="og:description" content="Library Collection of All free Movies on 123Movies.org. Watch any movie here online"/>
+    <meta property="og:url" content="{{ web_conf.url }}{{ url_for('az_list', libs=libs, page=cp) }}"/>
+    <meta property="og:site_name" content="{{ web_conf.site_name }}"/>
+    <meta property="og:image" content="{{ web_conf.social.image }}"/>
+    <meta property="fb:admins" content="{{ web_conf.social.facebook.admin }}"/>
+    <meta property="fb:pages" content="{{ web_conf.social.facebook.pages }}"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:description" content="Library Collection of All free Movies on 123Movies.org. Watch any movie here online"/>
+    <meta name="twitter:title" content="Library Collection of All Movies on 123Movies.org"/>
+    <meta name="twitter:site" content="{{ web_conf.site_name }}"/>
+    <meta name="twitter:image" content="{{ web_conf.social.image }}"/>
+    <meta name="twitter:creator" content="@{{ web_conf.social.twitter.name }}"/>
+{% endblock -%}
+
+{%- block css %}
+    {% assets filters="cssmin", output="css/app-az-list.css", "css/fonts.css", "css/bootstrap.min.css", "css/fa.min.css", "css/qtip.css", "css/style.css", "css/custom.css" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}" type="text/css"/>
+    {% endassets %}
+{% endblock -%}
+
+{% block body %}
+<div id="main" class="page-category">
+    <div class="container">
+        <div class="pad"></div>
+        <div class="main-content main-category">
+            <div class="movies-list-wrap mlw-category">
+                <div class="ml-title ml-title-page">
+                    <span>Movies By Letter {{ libs|capitalize }}{% if cp > 1 %} - Page {{ cp }}{% endif %}</span>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="ml-alphabet">
+                    <div class="movies-letter">
+                        <a class="btn btn-letter{% if libs == '0-9' %} active{% endif %}" title="0-9" href="{{ url_for('az_list') }}">0-9</a>
+                        {% for letter in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' %}
+                        <a class="btn btn-letter{% if libs == letter %} active{% endif %}" title="{{ letter }}" href="{{ url_for('az_list', libs=letter) }}">{{ letter }}</a>
+                        {% endfor %}
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="letter-movies-lits">
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr class="mlnew-head">
+                            <td class="mlnh-1">#</td>
+                            <td colspan="2" class="mlnh-letter">{{ ti }} results</td>
+                            <td class="mlnh-3">Year</td>
+                            <td class="mlnh-3">Status</td>
+                            <td class="mlnh-5">Country</td>
+                            <td class="mlnh-4">Genre</td>
+                            <td class="mlnh-6">IMDb</td>
+                        </tr>
+                        {% for item in items %}
+                        <tr class="mlnew">
+                            <td class="mlnh-1">{{ loop.index + (cp - 1) * per_p }}</td>
+                            <td class="mlnh-thumb">
+                                <a href="{{ url_for('film_page', slug=item['slug']) }}" class="thumb">
+                                    <img data-src="https://{{ web_conf.imgcdn }}/poster/{{ item['data_id'] }}/{{ item['slug'] }}-60.jpg" class="lazy thumb mli-thumb" title="{{item['title']}}" alt="{{item['title']}}">
+                                </a>
+                            </td>
+                            <td class="mlnh-2">
+                                <h2>
+                                    <a href="{{ url_for('film_page', slug=item['slug']) }}" title="{{item['title']}}">{{item['title']}}</a>
+                                </h2>
+                            </td>
+                            <td>{{item['year']}}</td>
+                            <td class="mlnh-3">{{item['quality']}}</td>
+                            <td class="mlnh-4">
+                                {% for country in item['country'] %}
+                                <a href="{{ url_for('country_list', slug=country['slug']) }}" title="{{ country['name'] }}">{{ country['name'] }}</a>{{ "," if not loop.last }}
+                                {% endfor %}
+                            </td>
+                            <td class="mlnh-5">
+                                {% for genre in item['genre'] %}
+                                <a href="{{ url_for('genre_list', slug=genre['slug']) }}" title="{{ genre['name'] }}">{{ genre['name'] }}</a>{{ "," if not loop.last }}
+                                {% endfor %}
+                            </td>
+                            <td class="mlnh-6">
+                                <span class="label label-warning">{{item['imdb_star']}}</span>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% if tp > 1 %}
+                    <div id="pagination">
+                        <nav>
+                            <ul class="pagination">
+                                {% if cp > 3 %}
+                                    <li>
+                                        <a href="{{ url_for('az_list', libs=libs) }}" rel="start">&lt;&lt; First</a>
+                                    </li>
+                                {% endif %}
+                                {% if cp > 1 %}
+                                    <li class="prev">
+                                        <a href="{{ url_for('az_list', libs=libs, page=pp) }}" rel="prev">&larr; Previous</a>
+                                    </li>
+                                {% endif %}
+                                {% if cp > 2 %}
+                                    <li>
+                                        <a href="{{ url_for('az_list', libs=libs, page=cp - 2) }}">{{ cp - 2 }}</a>
+                                    </li>
+                                {% endif %}
+                                {% if cp > 1 and cp != 2 %}
+                                    <li>
+                                        <a href="{{ url_for('az_list', libs=libs, page=cp - 1) }}">{{ cp - 1 }}</a>
+                                    </li>
+                                {% elif cp == 2 %}
+                                    <li>
+                                        <a href="{{ url_for('az_list', libs=libs) }}">{{ cp - 1 }}</a>
+                                    </li>
+                                {% endif %}
+                                    <li class="active"><a href="#">{{ cp }}</a></li>
+                                {% if cp < tp %}
+                                    <li>
+                                        <a href="{{ url_for('az_list', libs=libs, page=cp + 1) }}">{{ cp + 1 }}</a>
+                                    </li>
+                                {% endif %}
+                                {% if cp < (tp - 1) %}
+                                    <li>
+                                        <a href="{{ url_for('az_list', libs=libs, page=cp + 2) }}">{{ cp + 2 }}</a>
+                                    </li>
+                                {% endif %}
+                                {% if cp < tp %}
+                                    <li class="next">
+                                        <a href="{{ url_for('az_list', libs=libs, page=np) }}" rel="next">Next &rarr;</a>
+                                    </li>
+                                {% endif %}
+                                {% if cp < (tp - 2) %}
+                                    <li>
+                                        <a href="{{ url_for('az_list', libs=libs, page=tp) }}">Last &gt;&gt;</a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block jslink %}
+    {% assets filters="jsmin", output="js/app-az-list.js", "js/jquery.min.js", "js/bootstrap.min.js", "js/scroll.js", "js/lazyload.js", "js/cookie.js", "js/qtip.js", "js/main.js" %}
+     <script src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+{% endblock %}

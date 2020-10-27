@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{%- block seo %}
+    <title>404 Not Found | {{ web_conf.site_name }}</title>
+    <meta name="description" content="The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again."/>
+{% endblock -%}
+
+{%- block css %}
+    {% assets filters="cssmin", output="css/app-login.css", "css/fonts.css", "css/bootstrap.min.css", "css/fa.min.css", "css/qtip.css", "css/style.css", "css/custom.css" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}" type="text/css"/>
+    {% endassets %}
+{% endblock -%}
+
+
+{% block body %}
+<div id="main" class="member">
+    <div class="container">
+        <div class="not-found">
+            <h1>404</h1>
+            <p>The requested URL was not found on the server.<br/>If you entered the URL manually please check your spelling and try again.</p>
+            <p><a class="btn btn-successful mt20" href="{{ url_for('page_home') }}" title="">BACK TO HOME</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block jslink %}
+    {% assets filters="jsmin", output="js/app-login.js", "js/jquery.min.js", "js/bootstrap.min.js", "js/scroll.js", "js/lazyload.js", "js/cookie.js", "js/qtip.js", "js/main.js" %}
+     <script src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+{% endblock %}

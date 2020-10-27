@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{%- block seo %}
+    <title>Frequently Asked Questions - 123movies.org</title>
+    <meta name="description" content="Frequently Asked Questions about 123Movies. Watch FREE Movies Online you can Watch and Download the latest movies without Registration."/>
+    <meta name="original-source" content="{{ web_conf.url }}{{ url_for('site_page', page=page) }}"/>
+    <link rel="canonical" href="{{ web_conf.url }}{{ url_for('site_page', page=page) }}"/>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Frequently Asked Questions - 123movies.org"/>
+    <meta property="og:description" content="Frequently Asked Questions about 123Movies. Watch FREE Movies Online you can Watch and Download the latest movies without Registration."/>
+    <meta property="og:url" content="{{ web_conf.url }}{{ url_for('site_page', page=page) }}"/>
+    <meta property="og:site_name" content="{{ web_conf.site_name }}"/>
+    <meta property="og:image" content="{{ web_conf.social.image }}"/>
+    <meta property="fb:admins" content="{{ web_conf.social.facebook.admin }}"/>
+    <meta property="fb:pages" content="{{ web_conf.social.facebook.pages }}"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:description" content="Frequently Asked Questions about 123Movies. Watch FREE Movies Online you can Watch and Download the latest movies without Registration."/>
+    <meta name="twitter:title" content="Frequently Asked Questions - 123movies.org"/>
+    <meta name="twitter:site" content="{{ web_conf.site_name }}"/>
+    <meta name="twitter:image" content="{{ web_conf.social.image }}"/>
+    <meta name="twitter:creator" content="@{{ web_conf.social.twitter.name }}"/>
+{% endblock -%}
+
+{%- block css %}
+    <link rel="stylesheet" href="{{ web_conf.cdnku }}/css/app-faq.css" type="text/css"/>
+{% endblock -%}
+
+{% block body %}
+<div id="main" class="page-detail page-profiles">
+    <div class="container">
+        <div class="pad"></div>
+        <div class="main-content main-detail">
+            <div id="bread">
+                <ol class="breadcrumb">
+                    <li><a href="{{ url_for('page_home') }}">Home</a></li>
+                    <li class="active">{{ items['name'] }}</li>
+                </ol>
+            </div>
+            <div class="infopage">
+                <div class="infopage-head">{{ items['name'] }}</div>
+                <div class="content">
+                    <div class="faq-div">
+                        <ul aria-multiselectable="true" role="tablist" id="accordion" class="panel-group faq-ul">
+                            <li class="panel">
+                                <a href="#faq1" data-parent="#accordion" data-toggle="collapse"
+                                   class="faq-li collapsed"><span>1</span>
+                                    <h3>Is it legal to watch movies on 123Movies ?</h3></a>
+                                <div role="tabpanel" class="panel-collapse collapse faq-li-content" id="faq1">
+                                    <p>Absolutely, Watching is totally legal. We also do not host the movies, we link to
+                                        them. </p>
+                                </div>
+                            </li>
+                            <li class="panel">
+                                <a href="#faq2" data-parent="#accordion" data-toggle="collapse"
+                                   class="faq-li collapsed"><span>2</span>
+                                    <h3>I can't find my Favorite movies, what can I do ?</h3></a>
+                                <div role="tabpanel" class="panel-collapse collapse faq-li-content" id="faq2">
+                                    <p>Please use the Request form here and we will upload these movies for you. </p>
+                                </div>
+                            </li>
+                            <li class="panel">
+                                <a href="#faq3" data-parent="#accordion" data-toggle="collapse"
+                                   class="faq-li collapsed"><span>3</span>
+                                    <h3>How to know the version of the movie I am watching ?</h3></a>
+                                <div role="tabpanel" class="panel-collapse collapse faq-li-content" id="faq3">
+                                    <p class="text-center"><img src="/img/faq-1.png"></p>
+                                </div>
+                            </li>
+                            <li class="panel">
+                                <a href="#faq4" data-parent="#accordion" data-toggle="collapse"
+                                   class="faq-li collapsed"><span>4</span>
+                                    <h3>The Movie doesn't play, it keeps loading. Why?</h3></a>
+                                <div role="tabpanel" class="panel-collapse collapse faq-li-content" id="faq4">
+                                    <p>Please try to clear your browser cache first. If it still doesn't work, we
+                                        recommend you to switch to Chrome for better performance.</p>
+                                </div>
+                            </li>
+                            <li class="panel">
+                                <a href="#faq5" data-parent="#accordion" data-toggle="collapse"
+                                   class="faq-li collapsed"><span>5</span>
+                                    <h3>How to play the movied in full screen mode ?</h3></a>
+                                <div role="tabpanel" class="panel-collapse collapse faq-li-content" id="faq5">
+                                    <p class="text-center"><img src="/img/faq-2.png"></p>
+                                </div>
+                            </li>
+                            <li class="panel">
+                                <a href="#faq6" data-parent="#accordion" data-toggle="collapse"
+                                   class="faq-li collapsed"><span>6</span>
+                                    <h3>How to turn on Subtitles?</h3></a>
+                                <div role="tabpanel" class="panel-collapse collapse faq-li-content" id="faq6">
+                                    <p class="text-center"><img src="/img/faq-3.png"></p>
+                                </div>
+                            </li>
+                            <li class="panel">
+                                <a href="#faq7" data-parent="#accordion" data-toggle="collapse"
+                                   class="faq-li collapsed"><span>7</span>
+                                    <h3>How do I know a quality of a Movie?</h3></a>
+                                <div role="tabpanel" class="panel-collapse collapse faq-li-content" id="faq7">
+                                    <p class="text-center"><img src="/img/faq-5.png"></p>
+                                </div>
+                            </li>
+                            <li class="panel">
+                                <a href="#faq8" data-parent="#accordion" data-toggle="collapse"
+                                   class="faq-li collapsed"><span>8</span>
+                                    <h3>Other problems with watching?</h3></a>
+                                <div role="tabpanel" class="panel-collapse collapse faq-li-content" id="faq8">
+                                    <p class="text-center"><img src="/img/faq-4.png"></p>
+                                </div>
+                            </li>
+                            <li class="panel">
+                                <a href="#faq9" data-parent="#accordion" data-toggle="collapse"
+                                   class="faq-li collapsed"><span>9</span>
+                                    <h3>How to contact 123Movies ?</h3></a>
+                                <div role="tabpanel" class="panel-collapse collapse faq-li-content" id="faq9">
+                                    <p>Please contact us at: <strong>support@123movies.fun</strong>.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block jslink %}
+    <script src="{{ web_conf.cdnku }}/js/app-faq.js"></script>
+{% endblock %}

@@ -1,0 +1,30 @@
+<div id="slider">
+    <div class="swiper-wrapper">
+        {% for item in sld %}
+            <div class="swiper-slide swiper-lazy" data-background="https://{{ web_conf['imgcdn'] }}/cover/{{ item['data_id'] }}/{{ item['slug'] }}-800.jpg">
+                <div class="swiper-lazy-preloader"></div>
+                <a href="{{ url_for('film_page', slug=item['slug']) }}" class="slide-link" title="{{ item['title'] }}"></a>
+                <div class="slide-caption">
+                    <h2>{{ item['title'] }}</h2>
+                    <p class="sc-desc">{{ item['desc'] | truncate(150) }}</p>
+                    <div class="slide-caption-info">
+                        <div class="block">
+                            <strong>Genre:</strong>
+                            {% for genre in item['genre'] %}
+                                <a href="{{ url_for('genre_list', slug=genre['slug']) }}" title="{{ genre['name'] }}">{{ genre['name'] }}</a>{{ "," if not loop.last }}
+                            {% endfor %}
+                        </div>
+                        <div class="block"><strong>Duration:</strong> {{ item['duration'] }} min</div>
+                        <div class="block"><strong>Release:</strong> {{ item['year'] }}</div>
+                        <div class="block"><strong>IMDb:</strong> {{ item['imdb_star'] }}</div>
+                    </div>
+                    <a href="{{ url_for('film_page', slug=item['slug']) }}">
+                        <div class="btn btn-successful mt20">Watching</div>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="clearfix"></div>
+</div>

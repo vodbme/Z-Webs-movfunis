@@ -1,0 +1,32 @@
+<div id="top-news">
+    <div class="top-news">
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="active"><a href="#tn-news" role="tab" data-toggle="tab">LATEST NEWS</a></li>
+        </ul>
+        <div class="top-news-content">
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane in fade active" id="tn-news">
+                    <ul class="tn-news">
+                        {% for item in news %}
+                            <li>
+                                <a href="{{ url_for('articles_view', slug=item['slug']) }}" title="{{ item['title'] }}" class="thumb news-thumb">
+                                    <img data-src="https://{{ web_conf['imgcdn'] }}/article-thumb/{{ item['data_id'] }}/{{ item['slug'] }}-100.jpg" class="lazy" alt="{{ item['title'] }}">
+                                </a>
+                                <div class="tnc-info">
+                                    <h4>
+                                        <a href="{{ url_for('articles_view', slug=item['slug']) }}"
+                                           title="{{ item['title'] }}">{{ item['title'] }}</a>
+                                    </h4>
+                                </div>
+                                <div class="clearfix"></div>
+                            </li>
+                        {% endfor %}
+                        <li class="view-more">
+                            <a href="{{ url_for('articles') }}"> View more <i class="fa fa-chevron-circle-right"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
