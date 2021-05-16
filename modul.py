@@ -47,7 +47,6 @@ def utcnow(p):
     return now
 
 
-
 def ts_now():
     p = '%Y-%m-%dT%H:%M:%S.%fZ'
     my_date = (datetime.now(pytz.timezone('UTC'))).strftime(p)

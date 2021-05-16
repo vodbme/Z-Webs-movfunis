@@ -19,7 +19,7 @@ assets = Environment(app)
 cache = Cache(app, config={'CACHE_TYPE': 'filesystem', 'CACHE_DIR': 'fcache'})
 cache1 = Cache(app, config={
     'CACHE_TYPE': 'redis',
-    'CACHE_REDIS_HOST': 'redisvo.dyndns.org',
+    'CACHE_REDIS_HOST': 'rds.vodb.ch',
     'CACHE_REDIS_PORT': 6379,
     'CACHE_REDIS_PASSWORD': md.enkey,
     'CACHE_REDIS_DB': 0
