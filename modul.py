@@ -17,7 +17,7 @@ from pymongo import MongoClient
 gsite = '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'  # dev
 gsecret = '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'  # dev
 enkey = "w2QrMBq%zqkAe$3R3okFKkjdX7NxmSUF&m@1oRGvB$HwUirN@z"
-clientweb = MongoClient('mongodb://vxzusr:NsTC6CJG&ScMcv69@vdb-02.vodb.ch:14086/?replicaSet=rs0&authSource=voxzer&readPreference=secondary')
+clientweb = MongoClient('mongodb://vxzusr:NsTC6CJG&ScMcv69@vdb-03.vodb.ch:14086/?replicaSet=rs0&authSource=admin')
 dbweb = clientweb['voxzer']
 clientlog = MongoClient('mongodb+srv://vxz:scraper2017@cluster0.e3ukx.mongodb.net/vxzusr?retryWrites=true&w=majority')
 dblog = clientlog['vxzusr']
